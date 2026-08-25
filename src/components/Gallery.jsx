@@ -1,12 +1,32 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 
 export default function Gallery() {
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.2 }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: 'easeOut' } }
+  };
+
   return (
-    <section className="bg-white border-b-8 border-zinc-950">
-      <div className="w-full flex flex-col lg:flex-row">
+    <section id="gallery" className="bg-white border-b-8 border-zinc-950">
+      <motion.div 
+        className="w-full flex flex-col lg:flex-row"
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-100px" }}
+      >
         
         {/* Left Column - Intro text and 1 Image */}
-        <div className="w-full lg:w-1/3 flex flex-col border-b-8 lg:border-b-0 lg:border-r-8 border-zinc-950">
+        <motion.div variants={itemVariants} className="w-full lg:w-1/3 flex flex-col border-b-8 lg:border-b-0 lg:border-r-8 border-zinc-950">
           <div className="p-8 lg:p-12 xl:p-16 border-b-8 border-zinc-950 bg-zinc-50 flex-grow flex flex-col justify-center">
              <h2 className="font-display font-black text-5xl md:text-6xl xl:text-7xl uppercase text-zinc-950 tracking-tighter leading-none mb-6">
                Sangre <br/> 
@@ -23,27 +43,27 @@ export default function Gallery() {
                <span className="bg-white text-zinc-950 px-3 py-1 font-bold uppercase tracking-widest text-xs border-2 border-zinc-950">Capoeira</span>
             </div>
           </div>
-        </div>
+        </motion.div>
 
         {/* Center Column - 1 Tall Image */}
-        <div className="w-full lg:w-1/3 relative min-h-[400px] lg:min-h-[800px] border-b-8 lg:border-b-0 lg:border-r-8 border-zinc-950 overflow-hidden group">
+        <motion.div variants={itemVariants} className="w-full lg:w-1/3 relative min-h-[400px] lg:min-h-[800px] border-b-8 lg:border-b-0 lg:border-r-8 border-zinc-950 overflow-hidden group">
            <img src="/kids_taekwondo.jpg" alt="Taekwondo Kids" className="absolute inset-0 w-full h-full object-cover grayscale contrast-[1.15] brightness-90 group-hover:scale-105 transition-transform duration-700" />
            <div className="absolute inset-0 bg-zinc-950/20 group-hover:bg-transparent transition-colors duration-500"></div>
            <div className="absolute bottom-0 left-0 p-8 z-10">
               <span className="bg-white text-zinc-950 px-4 py-2 font-bold uppercase tracking-widest text-sm border-2 border-zinc-950">Taekwondo ITF</span>
            </div>
-        </div>
+        </motion.div>
 
         {/* Right Column - 1 Image */}
-        <div className="w-full lg:w-1/3 relative min-h-[400px] lg:min-h-[800px] overflow-hidden group">
+        <motion.div variants={itemVariants} className="w-full lg:w-1/3 relative min-h-[400px] lg:min-h-[800px] overflow-hidden group">
            <img src="/youth_muaythai.jpg" alt="Muay Thai Youth" className="absolute inset-0 w-full h-full object-cover grayscale contrast-[1.15] brightness-90 group-hover:scale-105 transition-transform duration-700" />
            <div className="absolute inset-0 bg-zinc-950/20 group-hover:bg-transparent transition-colors duration-500"></div>
            <div className="absolute bottom-0 right-0 p-8 z-10 text-right">
               <span className="bg-fertex-red text-white px-4 py-2 font-bold uppercase tracking-widest text-sm border-2 border-zinc-950">Muay Thai</span>
            </div>
-        </div>
+        </motion.div>
 
-      </div>
+      </motion.div>
     </section>
   );
 }

@@ -2,7 +2,7 @@ import React from 'react';
 
 export default function Marquee() {
   const words = [
-    "DISCIPLINA", "RESPETO", "HONOR", "FUERZA", "CARÁCTER", "LEALTAD", 
+    "DISCIPLINA", "RESPETO", "HONOR", "FUERZA", "CARÁCTER", "LEALTAD",
     "DISCIPLINA", "RESPETO", "HONOR", "FUERZA", "CARÁCTER", "LEALTAD"
   ];
 
@@ -13,7 +13,7 @@ export default function Marquee() {
         It translates the container from 0% to -100% continuously.
       */}
       <div className="flex whitespace-nowrap animate-marquee">
-        
+
         {/* First identical block */}
         <div className="flex shrink-0 items-center">
           {words.map((word, index) => (
@@ -37,7 +37,7 @@ export default function Marquee() {
             </React.Fragment>
           ))}
         </div>
-        
+
       </div>
     </div>
   );

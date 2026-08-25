@@ -10,14 +10,17 @@ export default function Header() {
               Fertex
             </span>
           </div>
-          <nav className="hidden md:flex space-x-4 lg:space-x-6 xl:space-x-8 items-center">
+          <nav className="hidden md:flex space-x-2 lg:space-x-4 xl:space-x-6 items-center">
             <a href="#about" className="text-zinc-950 hover:bg-zinc-950 hover:text-white px-2 lg:px-3 py-2 text-sm font-bold uppercase tracking-widest transition-colors duration-200 border-2 border-transparent hover:border-zinc-950 whitespace-nowrap">
               Sobre Nosotros
             </a>
-            <a href="#classes" className="text-zinc-950 hover:bg-zinc-950 hover:text-white px-2 lg:px-3 py-2 text-sm font-bold uppercase tracking-widest transition-colors duration-200 border-2 border-transparent hover:border-zinc-950 whitespace-nowrap">
-              Clases
+            <a href="#gallery" className="text-zinc-950 hover:bg-zinc-950 hover:text-white px-2 lg:px-3 py-2 text-sm font-bold uppercase tracking-widest transition-colors duration-200 border-2 border-transparent hover:border-zinc-950 whitespace-nowrap">
+              Sangre Nueva
             </a>
-            <a href="#contact" className="bg-fertex-red text-white px-4 lg:px-4 xl:px-6 py-2 text-sm font-bold uppercase tracking-widest border-2 border-zinc-950 hover:bg-zinc-950 transition-colors duration-200 whitespace-nowrap">
+            <a href="#instructors" className="text-zinc-950 hover:bg-zinc-950 hover:text-white px-2 lg:px-3 py-2 text-sm font-bold uppercase tracking-widest transition-colors duration-200 border-2 border-transparent hover:border-zinc-950 whitespace-nowrap">
+              Maestros
+            </a>
+            <a href="#contact" className="bg-fertex-red text-white px-4 lg:px-4 xl:px-6 py-2 text-sm font-bold uppercase tracking-widest border-2 border-zinc-950 hover:bg-zinc-950 transition-colors duration-200 whitespace-nowrap ml-2">
               Únete Ahora
             </a>
           </nav>
