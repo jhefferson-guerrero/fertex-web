@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 
 export default function Hero() {
   return (
@@ -12,7 +13,12 @@ export default function Hero() {
           <img src="/hand_wraps.jpg" alt="Hand Wraps" className="w-full h-full object-cover grayscale contrast-150" />
         </div>
 
-        <div className="relative z-20">
+        <motion.div 
+          className="relative z-20"
+          initial={{ opacity: 0, y: 100 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+        >
           <h1 className="font-display font-black text-7xl lg:text-7xl xl:text-8xl 2xl:text-[8rem] tracking-tighter text-zinc-950 uppercase leading-[0.85] lg:leading-[0.9] 2xl:leading-[0.85] mb-6 lg:mb-4 xl:mb-8 relative">
             Forja<br />
             Tu<br />
@@ -29,7 +35,7 @@ export default function Hero() {
               Descubre Más
             </a>
           </div>
-        </div>
+        </motion.div>
       </div>
 
       {/* RIGHT COLUMN */}
@@ -42,7 +48,12 @@ export default function Hero() {
         </div>
 
         {/* Premium typography overlay */}
-        <div className="relative z-10 p-8 lg:p-8 xl:p-12 w-full h-full flex flex-col justify-between">
+        <motion.div 
+          className="relative z-10 p-8 lg:p-8 xl:p-12 w-full h-full flex flex-col justify-between"
+          initial={{ opacity: 0, x: 100 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.6, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+        >
           <div className="text-right opacity-90">
             <span className="font-display font-black text-8xl lg:text-9xl xl:text-[10rem] 2xl:text-[12rem] leading-none text-transparent tracking-tighter uppercase block" style={{ WebkitTextStroke: '3px #CC0000' }}>
               20
@@ -55,7 +66,7 @@ export default function Hero() {
               <span className="text-fertex-red mix-blend-normal relative z-20" style={{ textShadow: '2px 2px 0px #000' }}>Disciplina</span>
             </h2>
           </div>
-        </div>
+        </motion.div>
 
       </div>
     </section>

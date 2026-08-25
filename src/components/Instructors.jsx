@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 
 export default function Instructors() {
   const instructors = [
@@ -22,11 +23,30 @@ export default function Instructors() {
     }
   ];
 
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.15 }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.4, ease: 'easeOut' } }
+  };
+
   return (
     <section id="instructors" className="w-full bg-zinc-950 border-b-8 border-zinc-950">
 
       {/* Massive Header */}
-      <div className="w-full border-b-8 border-zinc-950 bg-white p-8 lg:p-12 flex flex-col md:flex-row justify-between items-end gap-8">
+      <motion.div 
+        className="w-full border-b-8 border-zinc-950 bg-white p-8 lg:p-12 flex flex-col md:flex-row justify-between items-end gap-8"
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ duration: 0.5, ease: 'easeOut' }}
+      >
         <div>
           <p className="uppercase font-bold tracking-widest text-zinc-500 text-sm mb-4 border-l-4 border-fertex-red pl-4">La Élite FERTEX</p>
           <h2 className="font-display font-black text-6xl md:text-7xl lg:text-8xl uppercase text-zinc-950 tracking-tighter leading-none">
@@ -36,12 +56,19 @@ export default function Instructors() {
         <p className="font-sans text-xl text-zinc-800 font-medium max-w-sm text-right hidden md:block">
           Entrena con verdaderos especialistas. No hay atajos, solo disciplina guiada por los mejores.
         </p>
-      </div>
+      </motion.div>
 
       {/* 3-Column Grid */}
-      <div className="w-full grid grid-cols-1 md:grid-cols-3">
+      <motion.div 
+        className="w-full grid grid-cols-1 md:grid-cols-3"
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-100px" }}
+      >
         {instructors.map((instructor, index) => (
-          <div
+          <motion.div
+            variants={itemVariants}
             key={index}
             className="group relative min-h-[500px] lg:min-h-[700px] border-b-8 md:border-b-0 md:border-r-8 border-zinc-950 overflow-hidden cursor-crosshair last:border-r-0"
           >
@@ -77,9 +104,9 @@ export default function Instructors() {
               </h3>
 
             </div>
-          </div>
+          </motion.div>
         ))}
-      </div>
+      </motion.div>
 
     </section>
   );

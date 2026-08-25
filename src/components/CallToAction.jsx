@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 
 export default function CallToAction() {
   return (
@@ -15,7 +16,13 @@ export default function CallToAction() {
         <div className="absolute inset-0 bg-gradient-to-t from-fertex-red/20 via-transparent to-transparent mix-blend-overlay"></div>
       </div>
 
-      <div className="relative z-10 w-full max-w-4xl mx-auto text-center flex flex-col items-center">
+      <motion.div 
+        className="relative z-10 w-full max-w-4xl mx-auto text-center flex flex-col items-center"
+        initial={{ opacity: 0, scale: 0.9, y: 50 }}
+        whileInView={{ opacity: 1, scale: 1, y: 0 }}
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+      >
          
          {/* Refined Sans Typography - Cleaner, perfectly readable, smaller size */}
          <h2 className="font-sans font-black text-5xl md:text-6xl lg:text-7xl uppercase text-white tracking-tight leading-[1.1] mb-6">
@@ -33,7 +40,7 @@ export default function CallToAction() {
            Agenda tu Clase de Prueba
          </button>
 
-      </div>
+      </motion.div>
       
     </section>
   );

@@ -1,11 +1,18 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 
 export default function Location() {
   return (
     <section id="contact" className="w-full bg-zinc-50 border-b-8 border-zinc-950 py-24 lg:py-32 px-4 sm:px-6 lg:px-8">
       
       {/* Bento Dashboard Container - Centered clean card */}
-      <div className="max-w-6xl mx-auto border-8 border-zinc-950 flex flex-col lg:flex-row bg-white shadow-[12px_12px_0px_0px_rgba(24,24,27,1)] lg:shadow-[24px_24px_0px_0px_rgba(24,24,27,1)]">
+      <motion.div 
+        className="max-w-6xl mx-auto border-8 border-zinc-950 flex flex-col lg:flex-row bg-white shadow-[12px_12px_0px_0px_rgba(24,24,27,1)] lg:shadow-[24px_24px_0px_0px_rgba(24,24,27,1)]"
+        initial={{ opacity: 0, y: 100 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+      >
         
         {/* Left Info Box */}
         <div className="w-full lg:w-1/2 p-8 md:p-12 lg:p-16 flex flex-col justify-center border-b-8 lg:border-b-0 lg:border-r-8 border-zinc-950">
@@ -16,7 +23,7 @@ export default function Location() {
            <div className="font-sans text-lg md:text-xl text-zinc-800 font-medium space-y-8">
              <div className="border-l-4 border-fertex-red pl-6">
                <p className="uppercase font-bold tracking-widest text-zinc-500 text-sm mb-2">Dirección</p>
-               <p className="leading-relaxed">Cruce con, Av. Central 5110, Av. El Muro Urb.<br/>San Juan de Lurigancho 15412</p>
+               <p className="leading-relaxed">Av. los Jardines Este 609<br/>San Juan de Lurigancho 15431</p>
              </div>
              <div className="border-l-4 border-fertex-red pl-6">
                <p className="uppercase font-bold tracking-widest text-zinc-500 text-sm mb-2">Teléfono</p>
@@ -37,7 +44,7 @@ export default function Location() {
         {/* Right Map Box */}
         <div className="w-full lg:w-1/2 relative min-h-[400px] lg:min-h-full bg-zinc-200">
            <iframe 
-             src="https://www.google.com/maps?q=Av.+Central+5110,+San+Juan+de+Lurigancho&z=17&output=embed" 
+             src="https://www.google.com/maps?q=Av.+los+Jardines+Este+609,+San+Juan+de+Lurigancho&z=17&output=embed" 
              className="absolute inset-0 w-full h-full grayscale contrast-[1.1] opacity-90 mix-blend-luminosity" 
              style={{ border: 0 }} 
              allowFullScreen="" 
@@ -47,7 +54,7 @@ export default function Location() {
            ></iframe>
         </div>
 
-      </div>
+      </motion.div>
     </section>
   );
 }

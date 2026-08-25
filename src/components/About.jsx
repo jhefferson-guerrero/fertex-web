@@ -1,10 +1,107 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 export default function About() {
-  const disciplines = ['Taekwondo ITF', 'Muay Thai', 'Capoeira'];
+  const [activeModal, setActiveModal] = useState(null);
+
+  const disciplines = [
+    {
+      title: 'Taekwondo ITF',
+      description: 'Disciplina, control y técnica. El Taekwondo en FERTEX no solo te enseña a defenderte mediante patadas rápidas y precisas, sino que forja un carácter indomable, respeto y autocontrol. Ideal para fortalecer el cuerpo y la mente desde la base.',
+      tags: ['Flexibilidad', 'Defensa', 'Carácter']
+    },
+    {
+      title: 'Muay Thai',
+      description: 'El arte de las ocho extremidades. Un entrenamiento duro y efectivo diseñado para maximizar tu striking, acondicionamiento físico cardiovascular y resistencia. Aprende a usar puños, codos, rodillas y espinillas con precisión milimétrica.',
+      tags: ['Striking', 'Resistencia', 'Potencia']
+    },
+    {
+      title: 'Capoeira',
+      description: 'Arte, ritmo y combate. Una expresión cultural única que combina artes marciales, acrobacias y música. Desarrolla tu agilidad, fuerza central (core) y coordinación en un ambiente donde la fluidez del movimiento lo es todo.',
+      tags: ['Agilidad', 'Acrobacia', 'Ritmo']
+    }
+  ];
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.15 }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.4, ease: 'easeOut' } }
+  };
 
   return (
     <section id="about" className="bg-white border-b-8 border-zinc-950">
+      
+      {/* Modal Overlay */}
+      <AnimatePresence>
+        {activeModal && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6">
+            {/* Backdrop */}
+            <motion.div 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="absolute inset-0 bg-zinc-950/80 backdrop-blur-sm" 
+              onClick={() => setActiveModal(null)}
+            ></motion.div>
+            
+            {/* Modal Content - Brutalist Box */}
+            <motion.div 
+              initial={{ scale: 0.9, opacity: 0, y: 20 }}
+              animate={{ scale: 1, opacity: 1, y: 0 }}
+              exit={{ scale: 0.9, opacity: 0, y: 20 }}
+              transition={{ type: "spring", stiffness: 300, damping: 25 }}
+              className="relative bg-white border-8 border-zinc-950 w-full max-w-2xl shadow-[16px_16px_0px_0px_rgba(24,24,27,1)] flex flex-col"
+            >
+              
+              {/* Header */}
+              <div className="flex justify-between items-center border-b-8 border-zinc-950 p-6 lg:p-8 bg-zinc-50">
+                <h3 className="font-display font-black text-4xl sm:text-5xl uppercase text-zinc-950 tracking-tighter">
+                  {activeModal.title}
+                </h3>
+                <button 
+                  onClick={() => setActiveModal(null)}
+                  className="bg-zinc-950 text-white font-bold p-2 border-4 border-zinc-950 hover:bg-fertex-red hover:text-white transition-colors flex items-center justify-center w-12 h-12"
+                >
+                  X
+                </button>
+              </div>
+              
+              {/* Body */}
+              <div className="p-6 lg:p-8 flex flex-col gap-6 bg-white">
+                <div className="flex flex-wrap gap-2 mb-2">
+                  {activeModal.tags.map((tag, i) => (
+                    <span key={i} className="bg-zinc-200 text-zinc-950 px-3 py-1 text-xs font-bold uppercase tracking-widest border-2 border-zinc-950">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+                <p className="font-sans text-lg md:text-xl text-zinc-800 leading-relaxed font-medium">
+                  {activeModal.description}
+                </p>
+                
+                <div className="mt-4">
+                  <a 
+                    href="#contact" 
+                    onClick={() => setActiveModal(null)}
+                    className="inline-block w-full bg-fertex-red text-white text-center text-lg font-bold uppercase tracking-widest px-8 py-5 border-4 border-zinc-950 hover:bg-zinc-950 transition-colors duration-200 shadow-[6px_6px_0px_0px_rgba(24,24,27,1)] hover:shadow-none hover:translate-x-1 hover:translate-y-1"
+                  >
+                    Estoy Listo
+                  </a>
+                </div>
+              </div>
+
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
+
       <div className="w-full grid grid-cols-1 lg:grid-cols-2">
 
         {/* Visual Column */}
@@ -12,11 +109,17 @@ export default function About() {
           <img src="/about_training.jpg" alt="Entrenamiento FERTEX" className="absolute inset-0 w-full h-full object-cover grayscale contrast-125 brightness-90" />
         </div>
 
-        {/* Text Column - Redesigned Modular Layout */}
-        <div className="w-full flex flex-col relative bg-white">
+        {/* Text Column - Modular Layout */}
+        <motion.div 
+          className="w-full flex flex-col relative bg-white"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+        >
 
           {/* Header Section */}
-          <div className="p-8 lg:p-12 xl:p-16 border-b-8 border-zinc-950">
+          <motion.div variants={itemVariants} className="p-8 lg:p-12 xl:p-16 border-b-8 border-zinc-950">
             <h2 className="font-display font-black text-6xl md:text-7xl uppercase text-zinc-950 tracking-tighter leading-none mb-6">
               Sobre <br />
               <span className="text-fertex-red">Nosotros</span>
@@ -24,10 +127,10 @@ export default function About() {
             <p className="font-sans text-lg md:text-xl text-zinc-800 leading-relaxed font-medium max-w-2xl">
               Hace más de 20 años nació FERTEX, con el sueño de crear un espacio donde niños, jóvenes y adultos puedan desarrollar disciplina, carácter y valores. No somos solo un gimnasio; somos una escuela de formación integral para la vida.
             </p>
-          </div>
+          </motion.div>
 
           {/* Modular Data / Bento Section */}
-          <div className="flex flex-col sm:flex-row border-b-8 border-zinc-950">
+          <motion.div variants={itemVariants} className="flex flex-col sm:flex-row border-b-8 border-zinc-950">
             {/* Data Box 1 */}
             <div className="flex-1 p-8 border-b-8 sm:border-b-0 sm:border-r-8 border-zinc-950 flex flex-col justify-center items-start bg-zinc-50">
               <span className="font-display font-black text-6xl md:text-7xl text-fertex-red tracking-tighter leading-none">20</span>
@@ -38,26 +141,27 @@ export default function About() {
               <span className="font-display font-black text-6xl md:text-7xl tracking-tighter leading-none">+1K</span>
               <span className="font-sans font-bold text-sm md:text-base uppercase tracking-widest text-zinc-400 mt-2">Cinturones Negros</span>
             </div>
-          </div>
+          </motion.div>
 
           {/* Disciplines List */}
-          <div className="flex flex-col flex-grow bg-zinc-50">
+          <motion.div variants={itemVariants} className="flex flex-col flex-grow bg-zinc-50">
             {disciplines.map((discipline, index) => (
               <div
                 key={index}
+                onClick={() => setActiveModal(discipline)}
                 className={`group flex items-center justify-between p-6 lg:p-8 hover:bg-fertex-red hover:text-white transition-colors duration-200 cursor-pointer ${index !== disciplines.length - 1 ? 'border-b-8 border-zinc-950' : ''}`}
               >
                 <span className="font-display font-bold text-3xl md:text-4xl uppercase tracking-tighter text-zinc-950 group-hover:text-white transition-colors">
-                  {discipline}
+                  {discipline.title}
                 </span>
                 <svg className="w-8 h-8 text-zinc-950 group-hover:text-white transform group-hover:translate-x-2 transition-all duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="square" strokeLinejoin="miter" strokeWidth="3" d="M17 8l4 4m0 0l-4 4m4-4H3" />
                 </svg>
               </div>
             ))}
-          </div>
+          </motion.div>
 
-        </div>
+        </motion.div>
       </div>
     </section>
   );
