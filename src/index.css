@@ -16,4 +16,26 @@
     0% { transform: translateX(0%); }
     100% { transform: translateX(-100%); }
   }
+  .text-stroke-fertex {
+    -webkit-text-stroke: 3px #CC0000;
+  }
+}
+
+/* Custom Scrollbar Brutalista */
+::-webkit-scrollbar {
+  width: 14px;
+}
+
+::-webkit-scrollbar-track {
+  background: #18181b; /* zinc-950 */
+  border-left: 2px solid #27272a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #CC0000; /* fertex-red */
+  border: 3px solid #18181b; /* Borde oscuro para crear efecto de flotación */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #ff1a1a; /* Rojo más brillante al pasar el mouse */
 }

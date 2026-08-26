@@ -1,44 +1,35 @@
 import React from 'react';
+import imgHandWraps from '../assets/images/hand_wraps.jpg';
 
 export default function Marquee() {
-  const words = [
-    "DISCIPLINA", "RESPETO", "HONOR", "FUERZA", "CARÁCTER", "LEALTAD",
-    "DISCIPLINA", "RESPETO", "HONOR", "FUERZA", "CARÁCTER", "LEALTAD"
-  ];
-
   return (
-    <div className="w-full bg-fertex-red border-b-8 border-zinc-950 overflow-hidden flex items-center py-6 md:py-8">
-      {/* 
-        The animate-marquee class is defined in index.css.
-        It translates the container from 0% to -100% continuously.
-      */}
-      <div className="flex whitespace-nowrap animate-marquee">
+    <section className="relative w-full h-[300px] md:h-[400px] lg:h-[500px] border-b-8 border-zinc-950 overflow-hidden bg-zinc-950">
+      
+      {/* Video Loop - Usando Poster como respaldo mientras subes tu video */}
+      <video 
+        autoPlay 
+        loop 
+        muted 
+        playsInline 
+        poster={imgHandWraps}
+        className="absolute inset-0 w-full h-full object-cover grayscale contrast-150 brightness-75 mix-blend-luminosity opacity-80"
+      >
+        {/* Aquí va tu video real. Ejemplo: <source src="/mivideo.mp4" type="video/mp4" /> */}
+        <source src="" type="video/mp4" />
+        Tu navegador no soporta videos.
+      </video>
 
-        {/* First identical block */}
-        <div className="flex shrink-0 items-center">
-          {words.map((word, index) => (
-            <React.Fragment key={`first-${index}`}>
-              <span className="font-display font-black text-5xl md:text-6xl lg:text-7xl uppercase text-zinc-950 px-8 md:px-12">
-                {word}
-              </span>
-              <span className="text-white text-4xl md:text-5xl font-black">/</span>
-            </React.Fragment>
-          ))}
-        </div>
+      {/* Overlay Oscuro para asegurar contraste y estilo brutalista */}
+      <div className="absolute inset-0 bg-zinc-950/40"></div>
 
-        {/* Second identical block (follows immediately to create the seamless loop) */}
-        <div className="flex shrink-0 items-center">
-          {words.map((word, index) => (
-            <React.Fragment key={`second-${index}`}>
-              <span className="font-display font-black text-5xl md:text-6xl lg:text-7xl uppercase text-zinc-950 px-8 md:px-12">
-                {word}
-              </span>
-              <span className="text-white text-4xl md:text-5xl font-black">/</span>
-            </React.Fragment>
-          ))}
-        </div>
-
+      {/* Frase Masiva Centrada */}
+      <div className="absolute inset-0 flex items-center justify-center p-4">
+        <h2 className="font-display font-black text-5xl md:text-7xl lg:text-8xl uppercase text-white tracking-tighter text-center leading-[0.9] text-stroke-fertex-small drop-shadow-2xl">
+          No hay atajos.<br/>
+          <span className="text-fertex-red mix-blend-normal" style={{ textShadow: '4px 4px 0px #000' }}>Solo Disciplina.</span>
+        </h2>
       </div>
-    </div>
+
+    </section>
   );
 }

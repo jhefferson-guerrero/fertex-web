@@ -1,5 +1,8 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import imgTkd from '../assets/images/instructor-taekwondo-01.webp';
+import imgMt from '../assets/images/instructor-muaythai.webp';
+import imgCap from '../assets/images/instructor-capoeira.webp';
 
 export default function Instructors() {
   const instructors = [
@@ -7,19 +10,19 @@ export default function Instructors() {
       name: "Sensei Yong",
       discipline: "Taekwondo",
       description: "Cinturón Negro 6to Dan. Especialista en combate competitivo y disciplina formativa.",
-      image: "/instructor_taekwondo.jpg"
+      image: imgTkd
     },
     {
       name: "Kru Nak",
       discipline: "Muay Thai",
       description: "Ex-campeón nacional. Enfoque brutal en striking, acondicionamiento y sparring.",
-      image: "/instructor_muaythai.jpg"
+      image: imgMt
     },
     {
       name: "Mestre Silva",
       discipline: "Capoeira",
       description: "Maestro formador. Fusión perfecta entre acrobacia, ritmo y técnica de derribo.",
-      image: "/instructor_capoeira.jpg"
+      image: imgCap
     }
   ];
 
@@ -48,8 +51,8 @@ export default function Instructors() {
         transition={{ duration: 0.5, ease: 'easeOut' }}
       >
         <div>
-          <p className="uppercase font-bold tracking-widest text-zinc-500 text-sm mb-4 border-l-4 border-fertex-red pl-4">La Élite FERTEX</p>
-          <h2 className="font-display font-black text-6xl md:text-7xl lg:text-8xl uppercase text-zinc-950 tracking-tighter leading-none">
+          <p className="uppercase font-bold tracking-widest text-zinc-500 text-sm mb-4 border-l-4 border-fertex-red pl-4">Grados Superiores</p>
+          <h2 className="font-display font-black text-5xl md:text-6xl lg:text-7xl uppercase text-zinc-950 tracking-tighter leading-none">
             Nuestros <br className="hidden md:block" /> Maestros
           </h2>
         </div>
@@ -70,7 +73,7 @@ export default function Instructors() {
           <motion.div
             variants={itemVariants}
             key={index}
-            className="group relative min-h-[500px] lg:min-h-[700px] border-b-8 md:border-b-0 md:border-r-8 border-zinc-950 overflow-hidden cursor-crosshair last:border-r-0"
+            className="group relative min-h-[500px] lg:min-h-[700px] border-b-8 md:border-b-0 md:border-r-8 border-zinc-950 overflow-hidden last:border-r-0"
           >
             {/* Background Image */}
             <img

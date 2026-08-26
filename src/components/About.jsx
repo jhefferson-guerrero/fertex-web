@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import aboutImage from '../assets/images/fertex-taekwondo-competencia-03.webp';
 
 export default function About() {
   const [activeModal, setActiveModal] = useState(null);
@@ -7,17 +8,17 @@ export default function About() {
   const disciplines = [
     {
       title: 'Taekwondo ITF',
-      description: 'Disciplina, control y técnica. El Taekwondo en FERTEX no solo te enseña a defenderte mediante patadas rápidas y precisas, sino que forja un carácter indomable, respeto y autocontrol. Ideal para fortalecer el cuerpo y la mente desde la base.',
+      description: 'Arte marcial coreano enfocado en la disciplina, técnica y autocontrol. Aprende defensa personal real a través de patadas dinámicas y forja una mentalidad inquebrantable.',
       tags: ['Flexibilidad', 'Defensa', 'Carácter']
     },
     {
       title: 'Muay Thai',
-      description: 'El arte de las ocho extremidades. Un entrenamiento duro y efectivo diseñado para maximizar tu striking, acondicionamiento físico cardiovascular y resistencia. Aprende a usar puños, codos, rodillas y espinillas con precisión milimétrica.',
+      description: 'El legendario boxeo tailandés. Un entrenamiento de cuerpo completo que combina puños, codos, rodillas y patadas para desarrollar fuerza pura y resistencia.',
       tags: ['Striking', 'Resistencia', 'Potencia']
     },
     {
       title: 'Capoeira',
-      description: 'Arte, ritmo y combate. Una expresión cultural única que combina artes marciales, acrobacias y música. Desarrolla tu agilidad, fuerza central (core) y coordinación en un ambiente donde la fluidez del movimiento lo es todo.',
+      description: 'Arte marcial afro-brasileño que fluye como una danza y golpea como un combate. Fusiona movimientos acrobáticos, música y verdadera expresión cultural en cada ginga.',
       tags: ['Agilidad', 'Acrobacia', 'Ritmo']
     }
   ];
@@ -49,6 +50,10 @@ export default function About() {
               exit={{ opacity: 0 }}
               className="absolute inset-0 bg-zinc-950/80 backdrop-blur-sm" 
               onClick={() => setActiveModal(null)}
+              role="button"
+              tabIndex={0}
+              onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); setActiveModal(null); } }}
+              aria-label="Cerrar modal"
             ></motion.div>
             
             {/* Modal Content - Brutalist Box */}
@@ -58,14 +63,19 @@ export default function About() {
               exit={{ scale: 0.9, opacity: 0, y: 20 }}
               transition={{ type: "spring", stiffness: 300, damping: 25 }}
               className="relative bg-white border-8 border-zinc-950 w-full max-w-2xl shadow-[16px_16px_0px_0px_rgba(24,24,27,1)] flex flex-col"
+              role="dialog"
+              aria-modal="true"
+              aria-labelledby="modal-title"
             >
               
               {/* Header */}
               <div className="flex justify-between items-center border-b-8 border-zinc-950 p-6 lg:p-8 bg-zinc-50">
-                <h3 className="font-display font-black text-4xl sm:text-5xl uppercase text-zinc-950 tracking-tighter">
+                <h3 id="modal-title" className="font-display font-black text-4xl sm:text-5xl uppercase text-zinc-950 tracking-tighter">
                   {activeModal.title}
                 </h3>
                 <button 
+                  type="button"
+                  aria-label="Cerrar modal"
                   onClick={() => setActiveModal(null)}
                   className="bg-zinc-950 text-white font-bold p-2 border-4 border-zinc-950 hover:bg-fertex-red hover:text-white transition-colors flex items-center justify-center w-12 h-12"
                 >
@@ -88,7 +98,9 @@ export default function About() {
                 
                 <div className="mt-4">
                   <a 
-                    href="#contact" 
+                    href={`https://wa.me/51944351592?text=Hola%20FERTEX,%20estoy%20listo%20para%20entrenar%20${encodeURIComponent(activeModal.title)}.`}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     onClick={() => setActiveModal(null)}
                     className="inline-block w-full bg-fertex-red text-white text-center text-lg font-bold uppercase tracking-widest px-8 py-5 border-4 border-zinc-950 hover:bg-zinc-950 transition-colors duration-200 shadow-[6px_6px_0px_0px_rgba(24,24,27,1)] hover:shadow-none hover:translate-x-1 hover:translate-y-1"
                   >
@@ -106,7 +118,7 @@ export default function About() {
 
         {/* Visual Column */}
         <div className="w-full border-b-8 lg:border-b-0 lg:border-r-8 border-zinc-950 flex flex-col justify-center bg-zinc-50 relative min-h-[400px] lg:min-h-[600px]">
-          <img src="/about_training.jpg" alt="Entrenamiento FERTEX" className="absolute inset-0 w-full h-full object-cover grayscale contrast-125 brightness-90" />
+          <img src={aboutImage} alt="Entrenamiento FERTEX" className="absolute inset-0 w-full h-full object-cover grayscale contrast-125 brightness-90" />
         </div>
 
         {/* Text Column - Modular Layout */}
@@ -148,6 +160,9 @@ export default function About() {
             {disciplines.map((discipline, index) => (
               <div
                 key={index}
+                role="button"
+                tabIndex={0}
+                onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); setActiveModal(discipline); } }}
                 onClick={() => setActiveModal(discipline)}
                 className={`group flex items-center justify-between p-6 lg:p-8 hover:bg-fertex-red hover:text-white transition-colors duration-200 cursor-pointer ${index !== disciplines.length - 1 ? 'border-b-8 border-zinc-950' : ''}`}
               >
