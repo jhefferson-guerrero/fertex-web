@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import imgCta from '../assets/images/fertex-muaythai-entrenamiento-05.webp';
 
 export default function CallToAction() {
   return (
@@ -8,12 +9,12 @@ export default function CallToAction() {
       {/* Cinematic Background Image */}
       <div className="absolute inset-0 z-0">
         {/* Using the gritty muay thai image for a dark, epic feel */}
-        <img src="/youth_muaythai.jpg" alt="Entrenamiento en Fertex" className="w-full h-full object-cover grayscale contrast-125" />
+        <img src={imgCta} alt="Entrenamiento en Fertex" className="w-full h-full object-cover grayscale contrast-125" />
         
-        {/* Deep dark cinematic overlay */}
-        <div className="absolute inset-0 bg-zinc-950/80"></div>
-        {/* Subtle red tint gradient from bottom */}
-        <div className="absolute inset-0 bg-gradient-to-t from-fertex-red/20 via-transparent to-transparent mix-blend-overlay"></div>
+        {/* Red tinted overlay to contrast with the black footer */}
+        <div className="absolute inset-0 bg-fertex-red/90 mix-blend-multiply"></div>
+        {/* Slight dark layer to ensure text readability */}
+        <div className="absolute inset-0 bg-zinc-950/20"></div>
       </div>
 
       <motion.div 
@@ -25,20 +26,20 @@ export default function CallToAction() {
       >
          
          {/* Refined Sans Typography - Cleaner, perfectly readable, smaller size */}
-         <h2 className="font-sans font-black text-5xl md:text-6xl lg:text-7xl uppercase text-white tracking-tight leading-[1.1] mb-6">
+         <h2 className="font-display font-black text-5xl md:text-6xl lg:text-7xl uppercase text-white tracking-tighter leading-[1.1] mb-6">
            ¿Tienes lo que se necesita?
          </h2>
          
          <div className="mb-12">
-           <p className="font-sans text-lg md:text-xl text-zinc-400 font-medium uppercase tracking-[0.2em]">
+           <p className="font-sans text-lg md:text-xl text-zinc-100 font-medium uppercase tracking-[0.2em] drop-shadow-md">
              Da el primer paso. El tatami te espera.
            </p>
          </div>
 
-         {/* Premium CTA Button */}
-         <button className="bg-fertex-red text-white text-lg md:text-xl font-bold uppercase tracking-widest px-10 py-5 border-4 border-fertex-red hover:bg-white hover:border-white hover:text-zinc-950 transition-all duration-300 shadow-[8px_8px_0px_0px_rgba(255,255,255,1)] hover:shadow-none hover:translate-x-2 hover:translate-y-2">
+         {/* Premium CTA Button - Now Black to stand out against the Red background */}
+         <a href="https://wa.me/51944351592?text=Hola%20FERTEX,%20quiero%20agendar%20mi%20clase%20de%20prueba%20gratis." target="_blank" rel="noopener noreferrer" className="inline-block bg-zinc-950 text-white text-lg md:text-xl font-bold uppercase tracking-widest px-10 py-5 border-4 border-zinc-950 hover:bg-white hover:border-white hover:text-zinc-950 transition-all duration-300 shadow-[8px_8px_0px_0px_rgba(255,255,255,1)] hover:shadow-none hover:translate-x-2 hover:translate-y-2">
            Agenda tu Clase de Prueba
-         </button>
+         </a>
 
       </motion.div>
       
