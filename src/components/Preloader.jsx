@@ -36,16 +36,24 @@ export default function Preloader({ onComplete }) {
         transition={{ duration: 2.2, repeat: Infinity, ease: "easeInOut" }}
         className="flex flex-col items-center gap-6 px-4"
       >
-        <img
+        <motion.img
+          initial={{ opacity: 0, scale: 0.5, filter: 'blur(10px)' }}
+          animate={{ opacity: 1, scale: 1, filter: 'blur(0px)' }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
           src={logoFertex}
           alt="FERTEX Cargando..."
           className="w-40 md:w-48 h-auto drop-shadow-[0_0_30px_rgba(204,0,0,0.5)]"
         />
 
         {/* Progress text or loading indicator */}
-        <h1 className="font-display font-black text-xl md:text-2xl text-zinc-400 tracking-[0.3em] uppercase">
+        <motion.h1 
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
+          className="font-display font-black text-xl md:text-2xl text-zinc-400 tracking-[0.3em] uppercase"
+        >
           Preparando <span className="text-white">Tatami</span>
-        </h1>
+        </motion.h1>
       </motion.div>
     </motion.div>
   );
