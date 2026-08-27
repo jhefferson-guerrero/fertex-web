@@ -7,21 +7,21 @@ import imgCap from '../assets/images/instructor-capoeira.webp';
 export default function Instructors() {
   const instructors = [
     {
-      name: "Sensei Yong",
+      name: "Paco Orizano",
       discipline: "Taekwondo",
-      description: "Cinturón Negro 6to Dan. Especialista en combate competitivo y disciplina formativa.",
+      description: "Instructor Internacional.",
       image: imgTkd
     },
     {
-      name: "Kru Nak",
+      name: "Instructor MuayThai",
       discipline: "Muay Thai",
-      description: "Ex-campeón nacional. Enfoque brutal en striking, acondicionamiento y sparring.",
+      description: "Instructor Especializado en Striking.",
       image: imgMt
     },
     {
-      name: "Mestre Silva",
+      name: "Edson Suarez",
       discipline: "Capoeira",
-      description: "Maestro formador. Fusión perfecta entre acrobacia, ritmo y técnica de derribo.",
+      description: "Instructor de Capoeira.",
       image: imgCap
     }
   ];
