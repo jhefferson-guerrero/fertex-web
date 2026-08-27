@@ -154,7 +154,7 @@ export default function About() {
             </h2>
             <div className="flex flex-col gap-4 font-sans text-lg md:text-xl text-zinc-800 leading-relaxed font-medium max-w-2xl">
               <p>
-                Hace más de 20 años nació FERTEX con el sueño de crear un espacio donde se forje disciplina, carácter y valores. Con el tiempo, nos convertimos en una gran familia marcada por el esfuerzo y el respeto.
+                Hace más de 24 años nació FERTEX con el sueño de crear un espacio donde se forje disciplina, carácter y valores. Con el tiempo, nos convertimos en una gran familia marcada por el esfuerzo y el respeto.
               </p>
               <p>
                 Hoy seguimos formando personas íntegras y deportistas comprometidos, orgullosos de ver cómo nuestros alumnos conquistan metas dentro y fuera del tatami.
@@ -171,7 +171,7 @@ export default function About() {
           <motion.div variants={itemVariants} className="flex flex-col sm:flex-row border-b-8 border-zinc-950">
             {/* Data Box 1 */}
             <div className="flex-1 p-8 border-b-8 sm:border-b-0 sm:border-r-8 border-zinc-950 flex flex-col justify-center items-start bg-zinc-50">
-              <span className="font-display font-black text-5xl md:text-6xl text-fertex-red tracking-tighter leading-none">20</span>
+              <span className="font-display font-black text-5xl md:text-6xl text-fertex-red tracking-tighter leading-none">24</span>
               <span className="font-sans font-bold text-sm md:text-base uppercase tracking-widest text-zinc-950 mt-2">Años de Legado</span>
             </div>
             {/* Data Box 2 */}

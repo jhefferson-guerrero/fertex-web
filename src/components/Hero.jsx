@@ -27,7 +27,7 @@ export default function Hero() {
             <span className="text-fertex-red">FERTEX</span>
           </h1>
           <p className="mt-4 text-lg lg:text-base xl:text-xl text-zinc-800 font-sans font-medium max-w-xl border-l-4 border-fertex-red pl-6 mb-12 lg:mb-6 2xl:mb-12 text-left bg-zinc-50/60 backdrop-blur-[2px]">
-            Escuela de artes marciales con 20 años de experiencia forjando disciplina. Especialistas en la enseñanza de Taekwondo ITF, Muay Thai y Capoeira.
+            Escuela de artes marciales con más de 24 años de experiencia forjando disciplina. Especialistas en la enseñanza de Taekwondo ITF, Muay Thai y Capoeira.
           </p>
           <div className="flex flex-wrap gap-4 xl:gap-6">
             <a href="https://wa.me/51944351592?text=Hola%20FERTEX,%20quiero%20empezar%20mi%20entrenamiento." target="_blank" rel="noopener noreferrer" className="inline-block bg-fertex-red text-white text-base lg:text-sm xl:text-lg font-bold uppercase tracking-widest px-6 lg:px-4 xl:px-8 py-4 lg:py-3 xl:py-4 border-4 border-zinc-950 hover:bg-zinc-950 transition-colors duration-200 text-center shadow-[8px_8px_0px_0px_rgba(24,24,27,1)] hover:shadow-none hover:translate-x-2 hover:translate-y-2 whitespace-nowrap">
@@ -58,7 +58,7 @@ export default function Hero() {
         >
           <div className="opacity-90">
             <span className="font-display font-black text-8xl lg:text-9xl xl:text-[10rem] 2xl:text-[12rem] leading-none text-transparent tracking-tighter uppercase block text-stroke-fertex">
-              20
+              24
             </span>
           </div>
 
