@@ -62,7 +62,7 @@ function App() {
       {!isLoading && (
         <div className="min-h-screen bg-zinc-50 selection:bg-fertex-red selection:text-white">
       <Header />
-      <main>
+      <main className="pt-24">
         <Hero />
         <About />
         <Marquee />

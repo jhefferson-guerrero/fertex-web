@@ -6,7 +6,7 @@ export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   return (
-    <header className="border-b-8 border-zinc-950 bg-white sticky top-0 z-50">
+    <header className="border-b-8 border-zinc-950 bg-white fixed top-0 w-full z-50">
       <div className="w-full px-4 sm:px-6 lg:px-8 xl:px-12 relative z-50 bg-white">
         <div className="flex justify-between items-center h-24">
           <div className="flex-shrink-0 flex items-center">
