@@ -3,13 +3,17 @@ import { motion } from 'framer-motion';
 import logoFertex from '../assets/images/logo-fertex.webp';
 
 import fondoInicio from '../assets/images/fondo-inicio.webp';
+import handWraps from '../assets/images/hand_wraps.jpg';
 
 export default function Preloader({ onComplete }) {
   useEffect(() => {
-    // PRECARGA SECRETA: Obligamos al navegador a descargar la foto más pesada en segundo plano
+    // PRECARGA SECRETA: Obligamos al navegador a descargar las fotos del Hero en segundo plano
     // mientras el usuario está distraído con la animación del escudo.
-    const img = new Image();
-    img.src = fondoInicio;
+    const img1 = new Image();
+    img1.src = fondoInicio;
+    
+    const img2 = new Image();
+    img2.src = handWraps;
 
     // 2.5s delay
     const timer = setTimeout(() => {
