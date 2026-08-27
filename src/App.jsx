@@ -1,5 +1,7 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
+import { AnimatePresence } from 'framer-motion';
 import Lenis from 'lenis';
+import Preloader from './components/Preloader';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import About from './components/About';
@@ -12,11 +14,13 @@ import Footer from './components/Footer';
 import BackToTop from './components/BackToTop';
 
 function App() {
+  const [isLoading, setIsLoading] = useState(true);
+
   useEffect(() => {
     // Opción 2: Scroll Inercial Ultra-Premium con Lenis
     const lenis = new Lenis({
       duration: 1.2,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), 
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       smooth: true,
     });
 
@@ -49,7 +53,13 @@ function App() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-zinc-50 selection:bg-fertex-red selection:text-white">
+    <>
+      <AnimatePresence>
+        {isLoading && <Preloader key="preloader" onComplete={() => setIsLoading(false)} />}
+      </AnimatePresence>
+
+      {!isLoading && (
+        <div className="min-h-screen bg-zinc-50 selection:bg-fertex-red selection:text-white">
       <Header />
       <main>
         <Hero />
@@ -62,7 +72,9 @@ function App() {
       </main>
       <Footer />
       <BackToTop />
-    </div>
+        </div>
+      )}
+    </>
   );
 }
 

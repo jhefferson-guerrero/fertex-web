@@ -15,7 +15,7 @@ export default function Hero() {
           <img src={imgHandWraps} alt="" className="w-full h-full object-cover grayscale contrast-150" aria-hidden="true" />
         </div>
 
-        <motion.div 
+        <motion.div
           className="relative z-20"
           initial={{ opacity: 0, y: 100 }}
           animate={{ opacity: 1, y: 0 }}
@@ -50,7 +50,7 @@ export default function Hero() {
         </div>
 
         {/* Premium typography overlay */}
-        <motion.div 
+        <motion.div
           className="relative z-10 p-8 lg:p-8 xl:p-12 w-full h-full flex flex-col justify-center lg:justify-between items-center lg:items-start text-center lg:text-left gap-8 lg:gap-0"
           initial={{ opacity: 0, x: 100 }}
           animate={{ opacity: 1, x: 0 }}

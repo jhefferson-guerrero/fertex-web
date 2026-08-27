@@ -40,7 +40,7 @@ export default function Gallery() {
             </p>
           </div>
           <div className="relative min-h-[300px] lg:min-h-[400px] flex-grow group overflow-hidden">
-            <img src={imgCapoeira} alt="Capoeira Kids" className="absolute inset-0 w-full h-full object-cover grayscale contrast-125 group-hover:scale-105 transition-transform duration-700" />
+            <img src={imgCapoeira} alt="Capoeira Kids" loading="lazy" className="absolute inset-0 w-full h-full object-cover grayscale contrast-125 group-hover:scale-105 transition-transform duration-700" />
             <div className="absolute inset-0 bg-zinc-950/20 group-hover:bg-transparent transition-colors duration-500"></div>
 
           </div>
@@ -48,14 +48,14 @@ export default function Gallery() {
 
         {/* Center Column - 1 Tall Image */}
         <motion.div variants={itemVariants} className="w-full lg:w-1/3 relative min-h-[400px] lg:min-h-[800px] border-b-8 lg:border-b-0 lg:border-r-8 border-zinc-950 overflow-hidden group">
-          <img src={imgTkd} alt="Taekwondo Kids" className="absolute inset-0 w-full h-full object-cover grayscale contrast-[1.15] brightness-90 group-hover:scale-105 transition-transform duration-700" />
+          <img src={imgTkd} alt="Taekwondo Kids" loading="lazy" className="absolute inset-0 w-full h-full object-cover grayscale contrast-[1.15] brightness-90 group-hover:scale-105 transition-transform duration-700" />
           <div className="absolute inset-0 bg-zinc-950/20 group-hover:bg-transparent transition-colors duration-500"></div>
 
         </motion.div>
 
         {/* Right Column - 1 Image */}
         <motion.div variants={itemVariants} className="w-full lg:w-1/3 relative min-h-[400px] lg:min-h-[800px] overflow-hidden group">
-          <img src={imgMt} alt="Muay Thai Youth" className="absolute inset-0 w-full h-full object-cover grayscale contrast-[1.15] brightness-90 group-hover:scale-105 transition-transform duration-700" />
+          <img src={imgMt} alt="Muay Thai Youth" loading="lazy" className="absolute inset-0 w-full h-full object-cover grayscale contrast-[1.15] brightness-90 group-hover:scale-105 transition-transform duration-700" />
           <div className="absolute inset-0 bg-zinc-950/20 group-hover:bg-transparent transition-colors duration-500"></div>
 
         </motion.div>

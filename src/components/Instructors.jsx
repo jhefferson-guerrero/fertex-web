@@ -77,6 +77,7 @@ export default function Instructors() {
           >
             {/* Background Image */}
             <img
+              loading="lazy"
               src={instructor.image}
               alt={instructor.name}
               className="absolute inset-0 w-full h-full object-cover grayscale contrast-125 brightness-75 group-hover:scale-105 group-hover:grayscale-0 group-hover:contrast-100 group-hover:brightness-90 transition-all duration-700 ease-in-out"
