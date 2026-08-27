@@ -132,14 +132,14 @@ export default function About() {
 
       <div className="w-full grid grid-cols-1 lg:grid-cols-2">
 
-        {/* Visual Column */}
-        <div className="order-2 lg:order-1 w-full flex flex-col justify-center bg-zinc-50 relative min-h-[400px] lg:min-h-[600px] lg:border-r-8 border-zinc-950">
+        {/* Visual Column (Desktop Only) */}
+        <div className="hidden lg:flex w-full flex-col justify-center bg-zinc-50 relative lg:min-h-[600px] lg:border-r-8 border-zinc-950">
           <img src={aboutImage} alt="Entrenamiento FERTEX" loading="lazy" className="absolute inset-0 w-full h-full object-cover grayscale contrast-125 brightness-90" />
         </div>
 
         {/* Text Column - Modular Layout */}
         <motion.div 
-          className="order-1 lg:order-2 w-full flex flex-col relative bg-white border-b-8 lg:border-b-0 border-zinc-950"
+          className="w-full flex flex-col relative bg-white border-b-8 lg:border-b-0 border-zinc-950"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
@@ -160,6 +160,11 @@ export default function About() {
                 Hoy seguimos formando personas íntegras y deportistas comprometidos, orgullosos de ver cómo nuestros alumnos conquistan metas dentro y fuera del tatami.
               </p>
             </div>
+          </motion.div>
+
+          {/* Mobile Only Visual Column (Interleaved) */}
+          <motion.div variants={itemVariants} className="block lg:hidden w-full relative min-h-[350px] border-b-8 border-zinc-950">
+            <img src={aboutImage} alt="Entrenamiento FERTEX" loading="lazy" className="absolute inset-0 w-full h-full object-cover grayscale contrast-125 brightness-90" />
           </motion.div>
 
           {/* Modular Data / Bento Section */}
