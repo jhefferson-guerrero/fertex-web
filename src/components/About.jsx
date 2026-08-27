@@ -152,9 +152,14 @@ export default function About() {
               Sobre <br />
               <span className="text-fertex-red">Nosotros</span>
             </h2>
-            <p className="font-sans text-lg md:text-xl text-zinc-800 leading-relaxed font-medium max-w-2xl">
-              Hace más de 20 años nació FERTEX, con el sueño de crear un espacio donde niños, jóvenes y adultos puedan desarrollar disciplina, carácter y valores. No somos solo un gimnasio; somos una escuela de formación integral para la vida.
-            </p>
+            <div className="flex flex-col gap-4 font-sans text-lg md:text-xl text-zinc-800 leading-relaxed font-medium max-w-2xl">
+              <p>
+                Hace más de 20 años nació FERTEX con el sueño de crear un espacio donde se forje disciplina, carácter y valores. Con el tiempo, nos convertimos en una gran familia marcada por el esfuerzo y el respeto.
+              </p>
+              <p>
+                Hoy seguimos formando personas íntegras y deportistas comprometidos, orgullosos de ver cómo nuestros alumnos conquistan metas dentro y fuera del tatami.
+              </p>
+            </div>
           </motion.div>
 
           {/* Modular Data / Bento Section */}
