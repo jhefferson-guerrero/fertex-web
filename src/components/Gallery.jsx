@@ -36,7 +36,7 @@ export default function Gallery() {
               <span className="text-fertex-red">Campeones</span>
             </h2>
             <p className="font-sans text-lg text-zinc-800 leading-relaxed font-medium">
-              Forjamos el carácter desde los primeros pasos. Nuestras clases para niños y jóvenes son el núcleo de la comunidad FERTEX, donde el respeto y la disciplina se aprenden en el tatami.
+              Forjamos carácter desde los primeros pasos. Nuestras clases infantiles y juveniles no son un juego; son el inicio de un camino donde el respeto, la constancia y la verdadera disciplina se demuestran en el tatami.
             </p>
           </div>
           <div className="relative min-h-[300px] lg:min-h-[400px] flex-grow group overflow-hidden">
