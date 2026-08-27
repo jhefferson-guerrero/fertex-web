@@ -9,7 +9,7 @@ export default function CallToAction() {
       {/* Cinematic Background Image */}
       <div className="absolute inset-0 z-0">
         {/* Using the gritty muay thai image for a dark, epic feel */}
-        <img src={imgCta} alt="Entrenamiento en Fertex" className="w-full h-full object-cover grayscale contrast-125" />
+        <img src={imgCta} alt="Entrenamiento en Fertex" loading="lazy" className="w-full h-full object-cover grayscale contrast-125" />
         
         {/* Red tinted overlay to contrast with the black footer */}
         <div className="absolute inset-0 bg-fertex-red/90 mix-blend-multiply"></div>

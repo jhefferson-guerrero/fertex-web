@@ -79,7 +79,7 @@ export default function Header() {
             <a href="#instructors" onClick={() => setIsMobileMenuOpen(false)} className="block text-zinc-950 py-4 text-center text-lg font-bold uppercase tracking-widest border-b-2 border-zinc-200 hover:bg-zinc-100">
               Maestros
             </a>
-            <a href="https://wa.me/51944351592?text=Hola%20FERTEX,%20quiero%20información%20sobre%20las%20clases." target="_blank" rel="noopener noreferrer" onClick={() => setIsMobileMenuOpen(false)} className="block bg-fertex-red text-white py-5 mt-4 text-center text-lg font-bold uppercase tracking-widest border-4 border-zinc-950">
+            <a href="https://wa.me/51944351592?text=Hola%20FERTEX,%20quiero%20información%20sobre%20las%20clases." target="_blank" rel="noopener noreferrer" onClick={() => setIsMobileMenuOpen(false)} className="block bg-fertex-red text-white py-3 mt-4 text-center text-base font-bold uppercase tracking-widest border-2 border-zinc-950 hover:bg-zinc-950 transition-colors">
               Únete Ahora
             </a>
           </motion.div>

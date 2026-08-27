@@ -1,9 +1,20 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import aboutImage from '../assets/images/fertex-taekwondo-competencia-03.webp';
 
 export default function About() {
   const [activeModal, setActiveModal] = useState(null);
+
+  // UX Fix: Bloquear el scroll del fondo cuando un modal está abierto
+  useEffect(() => {
+    if (activeModal) {
+      document.body.classList.add('overflow-hidden');
+    } else {
+      document.body.classList.remove('overflow-hidden');
+    }
+    // Limpieza en caso de que el componente se desmonte
+    return () => document.body.classList.remove('overflow-hidden');
+  }, [activeModal]);
 
   const disciplines = [
     {
@@ -118,7 +129,7 @@ export default function About() {
 
         {/* Visual Column */}
         <div className="order-2 lg:order-1 w-full flex flex-col justify-center bg-zinc-50 relative min-h-[400px] lg:min-h-[600px] lg:border-r-8 border-zinc-950">
-          <img src={aboutImage} alt="Entrenamiento FERTEX" className="absolute inset-0 w-full h-full object-cover grayscale contrast-125 brightness-90" />
+          <img src={aboutImage} alt="Entrenamiento FERTEX" loading="lazy" className="absolute inset-0 w-full h-full object-cover grayscale contrast-125 brightness-90" />
         </div>
 
         {/* Text Column - Modular Layout */}
