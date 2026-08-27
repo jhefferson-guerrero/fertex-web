@@ -3,7 +3,7 @@ import imgHandWraps from '../assets/images/hand_wraps.jpg';
 
 export default function Marquee() {
   return (
-    <section className="relative w-full h-[300px] md:h-[400px] lg:h-[500px] border-b-8 border-zinc-950 overflow-hidden bg-zinc-950">
+    <section className="relative w-full min-h-[500px] md:min-h-[600px] lg:h-[80vh] border-b-8 border-zinc-950 overflow-hidden bg-zinc-950">
       
       {/* Video Loop - Usando Poster como respaldo mientras subes tu video */}
       <video 
