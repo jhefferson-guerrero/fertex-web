@@ -74,10 +74,10 @@ export default function About() {
             
             {/* Modal Content - Brutalist Box */}
             <motion.div 
-              initial={{ scale: 0.9, opacity: 0, y: 20 }}
-              animate={{ scale: 1, opacity: 1, y: 0 }}
-              exit={{ scale: 0.9, opacity: 0, y: 20 }}
-              transition={{ type: "spring", stiffness: 300, damping: 25 }}
+              initial={{ opacity: 0, y: 40 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 40 }}
+              transition={{ type: "spring", stiffness: 400, damping: 30 }}
               className="relative bg-white border-8 border-zinc-950 w-full max-w-2xl shadow-[16px_16px_0px_0px_rgba(24,24,27,1)] flex flex-col"
               role="dialog"
               aria-modal="true"
