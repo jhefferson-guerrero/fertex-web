@@ -9,19 +9,19 @@ export default function Instructors() {
     {
       name: "Paco Orizano",
       discipline: "Taekwondo",
-      description: "Instructor Internacional.",
+      description: "Instructor Internacional. Especialista en combate competitivo y disciplina formativa.",
       image: imgTkd
     },
     {
       name: "Instructor MuayThai",
       discipline: "Muay Thai",
-      description: "Instructor Especializado en Striking.",
+      description: "Enfoque brutal en striking, acondicionamiento y sparring.",
       image: imgMt
     },
     {
       name: "Edson Suarez",
       discipline: "Capoeira",
-      description: "Instructor de Capoeira.",
+      description: "Maestro formador. Fusión perfecta entre acrobacia, ritmo y técnica de derribo.",
       image: imgCap
     }
   ];
