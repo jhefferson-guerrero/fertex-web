@@ -145,12 +145,12 @@ export default function About() {
           <motion.div variants={itemVariants} className="flex flex-col sm:flex-row border-b-8 border-zinc-950">
             {/* Data Box 1 */}
             <div className="flex-1 p-8 border-b-8 sm:border-b-0 sm:border-r-8 border-zinc-950 flex flex-col justify-center items-start bg-zinc-50">
-              <span className="font-display font-black text-6xl md:text-7xl text-fertex-red tracking-tighter leading-none">20</span>
+              <span className="font-display font-black text-5xl md:text-6xl text-fertex-red tracking-tighter leading-none">20</span>
               <span className="font-sans font-bold text-sm md:text-base uppercase tracking-widest text-zinc-950 mt-2">Años de Legado</span>
             </div>
             {/* Data Box 2 */}
             <div className="flex-1 p-8 flex flex-col justify-center items-start bg-zinc-950 text-white">
-              <span className="font-display font-black text-6xl md:text-7xl tracking-tighter leading-none">+1K</span>
+              <span className="font-display font-black text-5xl md:text-6xl tracking-tighter leading-none">+1K</span>
               <span className="font-sans font-bold text-sm md:text-base uppercase tracking-widest text-zinc-400 mt-2">Cinturones Negros</span>
             </div>
           </motion.div>
