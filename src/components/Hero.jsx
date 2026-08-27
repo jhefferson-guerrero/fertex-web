@@ -19,7 +19,7 @@ export default function Hero() {
           className="relative z-20"
           initial={{ opacity: 0, y: 100 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ duration: 0.7, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
         >
           <h1 className="font-display font-black text-7xl lg:text-7xl xl:text-8xl 2xl:text-[8rem] tracking-tighter text-zinc-950 uppercase leading-[0.95] lg:leading-[0.9] 2xl:leading-[0.85] mb-6 lg:mb-4 xl:mb-8 relative">
             Familia<br />
@@ -54,7 +54,7 @@ export default function Hero() {
           className="relative z-10 p-8 lg:p-8 xl:p-12 w-full h-full flex flex-col justify-center lg:justify-between items-center lg:items-start text-center lg:text-left gap-8 lg:gap-0"
           initial={{ opacity: 0, x: 100 }}
           animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.6, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ duration: 0.8, delay: 0.6, ease: [0.22, 1, 0.36, 1] }}
         >
           <div className="opacity-90">
             <span className="font-display font-black text-8xl lg:text-9xl xl:text-[10rem] 2xl:text-[12rem] leading-none text-transparent tracking-tighter uppercase block text-stroke-fertex">
