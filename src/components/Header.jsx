@@ -17,7 +17,7 @@ export default function Header() {
                 className="h-16 md:h-20 w-auto cursor-pointer" 
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.5, type: 'spring', stiffness: 200, damping: 15 }}
+                transition={{ duration: 0.5, delay: 0.8, type: 'spring', stiffness: 200, damping: 15 }}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               />
