@@ -18,8 +18,8 @@ export default function Header() {
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.5, delay: 0.8, type: 'spring', stiffness: 200, damping: 15 }}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
+                whileHover={{ scale: 1.05, transition: { delay: 0, duration: 0.2 } }}
+                whileTap={{ scale: 0.95, transition: { delay: 0, duration: 0.1 } }}
               />
             </a>
           </div>
