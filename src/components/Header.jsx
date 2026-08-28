@@ -11,16 +11,17 @@ export default function Header() {
         <div className="flex justify-between items-center h-24">
           <div className="flex-shrink-0 flex items-center">
             <a href="#" aria-label="Volver al inicio" onClick={() => setIsMobileMenuOpen(false)}>
-              <motion.img 
-                src={logoFertex} 
-                alt="FERTEX Logo" 
-                className="h-16 md:h-20 w-auto cursor-pointer" 
+              <motion.div 
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.5, delay: 0.8, type: 'spring', stiffness: 200, damping: 15 }}
-                whileHover={{ scale: 1.05, transition: { delay: 0, duration: 0.2 } }}
-                whileTap={{ scale: 0.95, transition: { delay: 0, duration: 0.1 } }}
-              />
+                transition={{ duration: 0.5, delay: 0.8, type: 'spring' }}
+              >
+                <img 
+                  src={logoFertex} 
+                  alt="FERTEX Logo" 
+                  className="h-16 md:h-20 w-auto cursor-pointer hover:scale-105 active:scale-95 transition-transform duration-200 ease-out" 
+                />
+              </motion.div>
             </a>
           </div>
           
