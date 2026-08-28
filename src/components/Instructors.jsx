@@ -44,7 +44,7 @@ export default function Instructors() {
 
       {/* Massive Header */}
       <motion.div 
-        className="w-full border-b-8 border-zinc-950 bg-white p-8 lg:p-12 flex flex-col md:flex-row justify-between items-end gap-8"
+        className="w-full border-b-8 border-zinc-950 bg-white p-8 lg:p-12 flex flex-col md:flex-row justify-between items-start md:items-end gap-8"
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-100px" }}
