@@ -30,7 +30,7 @@ export default function Hero() {
             Escuela de artes marciales con más de 24 años de experiencia forjando disciplina. Especialistas en la enseñanza de Taekwondo ITF, Muay Thai y Capoeira.
           </p>
           <div className="flex flex-wrap gap-4 xl:gap-6">
-            <a href="https://wa.me/51944351592?text=Hola%20FERTEX,%20quiero%20empezar%20mi%20entrenamiento." target="_blank" rel="noopener noreferrer" className="inline-block bg-fertex-red text-white text-base lg:text-sm xl:text-lg font-bold uppercase tracking-widest px-6 lg:px-4 xl:px-8 py-4 lg:py-3 xl:py-4 border-4 border-zinc-950 hover:bg-zinc-950 transition-colors duration-200 text-center shadow-[8px_8px_0px_0px_rgba(24,24,27,1)] hover:shadow-none hover:translate-x-2 hover:translate-y-2 whitespace-nowrap">
+            <a href="https://wa.me/51944351592?text=Hola%20FERTEX,%20vengo%20de%20su%20página%20web.%20Me%20gustaría%20saber%20los%20horarios%20y%20precios%20de%20las%20clases,%20por%20favor." target="_blank" rel="noopener noreferrer" className="inline-block bg-fertex-red text-white text-base lg:text-sm xl:text-lg font-bold uppercase tracking-widest px-6 lg:px-4 xl:px-8 py-4 lg:py-3 xl:py-4 border-4 border-zinc-950 hover:bg-zinc-950 transition-colors duration-200 text-center shadow-[8px_8px_0px_0px_rgba(24,24,27,1)] hover:shadow-none hover:translate-x-2 hover:translate-y-2 whitespace-nowrap">
               Empieza tu Entrenamiento
             </a>
             <a href="#about" className="inline-block bg-white text-zinc-950 text-base lg:text-sm xl:text-lg font-bold uppercase tracking-widest px-6 lg:px-4 xl:px-8 py-4 lg:py-3 xl:py-4 border-4 border-zinc-950 hover:bg-zinc-100 transition-colors duration-200 text-center whitespace-nowrap">

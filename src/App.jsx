@@ -12,6 +12,7 @@ import Location from './components/Location';
 import CallToAction from './components/CallToAction';
 import Footer from './components/Footer';
 import BackToTop from './components/BackToTop';
+import WhatsAppButton from './components/WhatsAppButton';
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -72,6 +73,7 @@ function App() {
         <Location />
       </main>
       <Footer />
+      <WhatsAppButton />
       <BackToTop />
         </div>
       )}

@@ -26,7 +26,7 @@ export default function BackToTop() {
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: 50 }}
           transition={{ duration: 0.3 }}
-          className="fixed bottom-6 right-6 md:bottom-8 md:right-8 z-40 bg-zinc-950 border-4 border-fertex-red p-3 hover:bg-fertex-red transition-colors group shadow-[6px_6px_0px_0px_rgba(24,24,27,1)] hover:shadow-none hover:translate-x-1 hover:translate-y-1"
+          className="fixed bottom-24 right-6 md:bottom-28 md:right-8 z-40 bg-zinc-950 border-4 border-fertex-red p-3 hover:bg-fertex-red transition-colors group shadow-[6px_6px_0px_0px_rgba(24,24,27,1)] hover:shadow-none hover:translate-x-1 hover:translate-y-1"
           aria-label="Volver arriba"
         >
           <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
