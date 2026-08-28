@@ -11,8 +11,8 @@ export default function Hero() {
       <div className="w-full lg:w-1/2 relative z-10 py-16 px-4 sm:px-6 lg:px-8 xl:px-12 lg:py-0 flex flex-col justify-center border-b-8 lg:border-b-0 lg:border-r-8 border-zinc-950 bg-zinc-50">
 
         {/* Subtle Hand Wraps image next to text */}
-        <div className="absolute right-0 top-0 h-full w-1/3 opacity-[0.15] pointer-events-none mix-blend-multiply hidden md:block">
-          <img src={imgHandWraps} alt="" className="w-full h-full object-cover grayscale contrast-150" aria-hidden="true" />
+        <div className="absolute right-0 top-0 h-full w-1/2 opacity-[0.15] pointer-events-none mix-blend-multiply hidden md:block">
+          <img src={imgHandWraps} alt="" className="w-full h-full object-contain object-right grayscale contrast-150" aria-hidden="true" />
         </div>
 
         <motion.div
