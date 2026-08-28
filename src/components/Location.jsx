@@ -52,7 +52,6 @@ export default function Location() {
              allowFullScreen="" 
              loading="lazy" 
              referrerPolicy="no-referrer-when-downgrade"
-             sandbox="allow-scripts allow-same-origin allow-popups"
              title="Mapa de la Sede FERTEX"
            ></iframe>
         </div>
