@@ -68,7 +68,7 @@ function App() {
         <About />
         <Marquee />
         <Gallery />
-        {/* <Instructors /> */}
+        <Instructors />
         <CallToAction />
         <Location />
       </main>

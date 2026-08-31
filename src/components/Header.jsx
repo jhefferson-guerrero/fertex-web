@@ -33,9 +33,9 @@ export default function Header() {
             <a href="#gallery" className="text-zinc-950 hover:bg-zinc-950 hover:text-white px-2 lg:px-3 py-2 text-sm font-bold uppercase tracking-widest transition-colors duration-200 border-2 border-transparent hover:border-zinc-950 whitespace-nowrap">
               Futuros Campeones
             </a>
-            {/* <a href="#instructors" className="text-zinc-950 hover:bg-zinc-950 hover:text-white px-2 lg:px-3 py-2 text-sm font-bold uppercase tracking-widest transition-colors duration-200 border-2 border-transparent hover:border-zinc-950 whitespace-nowrap">
+            <a href="#instructors" className="text-zinc-950 hover:bg-zinc-950 hover:text-white px-2 lg:px-3 py-2 text-sm font-bold uppercase tracking-widest transition-colors duration-200 border-2 border-transparent hover:border-zinc-950 whitespace-nowrap">
               Maestros
-            </a> */}
+            </a>
             <a href="https://wa.me/51944351592?text=Hola%20FERTEX,%20vengo%20de%20su%20página%20web.%20Me%20gustaría%20saber%20los%20horarios%20y%20precios%20de%20las%20clases,%20por%20favor." target="_blank" rel="noopener noreferrer" className="bg-fertex-red text-white px-4 lg:px-4 xl:px-6 py-2 text-sm font-bold uppercase tracking-widest border-2 border-zinc-950 hover:bg-zinc-950 transition-colors duration-200 whitespace-nowrap ml-2">
               Únete Ahora
             </a>
@@ -77,9 +77,9 @@ export default function Header() {
             <a href="#gallery" onClick={() => setIsMobileMenuOpen(false)} className="block text-zinc-950 py-4 text-center text-lg font-bold uppercase tracking-widest border-b-2 border-zinc-200 hover:bg-zinc-100">
               Futuros Campeones
             </a>
-            {/* <a href="#instructors" onClick={() => setIsMobileMenuOpen(false)} className="block text-zinc-950 py-4 text-center text-lg font-bold uppercase tracking-widest border-b-2 border-zinc-200 hover:bg-zinc-100">
+            <a href="#instructors" onClick={() => setIsMobileMenuOpen(false)} className="block text-zinc-950 py-4 text-center text-lg font-bold uppercase tracking-widest border-b-2 border-zinc-200 hover:bg-zinc-100">
               Maestros
-            </a> */}
+            </a>
             <a href="https://wa.me/51944351592?text=Hola%20FERTEX,%20vengo%20de%20su%20página%20web.%20Me%20gustaría%20saber%20los%20horarios%20y%20precios%20de%20las%20clases,%20por%20favor." target="_blank" rel="noopener noreferrer" onClick={() => setIsMobileMenuOpen(false)} className="block bg-fertex-red text-white py-3 mt-4 text-center text-base font-bold uppercase tracking-widest border-2 border-zinc-950 hover:bg-zinc-950 transition-colors">
               Únete Ahora
             </a>

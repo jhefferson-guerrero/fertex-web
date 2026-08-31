@@ -1,5 +1,5 @@
 import React from 'react';
-import imgHandWraps from '../assets/images/hand_wraps.jpg';
+import imgBg from '../assets/images/fertex-taekwondo-maestros-instructores-01.webp';
 
 export default function Marquee() {
   return (
@@ -11,8 +11,8 @@ export default function Marquee() {
         loop 
         muted 
         playsInline 
-        poster={imgHandWraps}
-        className="absolute inset-0 w-full h-full object-cover grayscale contrast-150 brightness-75 mix-blend-luminosity opacity-80"
+        poster={imgBg}
+        className="absolute inset-0 w-full h-full object-cover object-top grayscale contrast-150 brightness-75 mix-blend-luminosity opacity-80"
       >
         {/* Aquí va tu video real. Ejemplo: <source src="/mivideo.mp4" type="video/mp4" /> */}
         <source src="" type="video/mp4" />

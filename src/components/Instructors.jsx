@@ -1,7 +1,5 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import imgTkd from '../assets/images/instructor-taekwondo-01.webp';
-import imgMt from '../assets/images/instructor-muaythai.webp';
 import imgCap from '../assets/images/instructor-capoeira.webp';
 
 export default function Instructors() {
@@ -10,13 +8,13 @@ export default function Instructors() {
       name: "Paco Orizano",
       discipline: "Taekwondo",
       description: "Instructor Internacional. Especialista en combate competitivo y disciplina formativa.",
-      image: imgTkd
+      image: "" // Pega aquí el URL de la imagen de Paco cuando la tengas
     },
     {
       name: "Instructor MuayThai",
       discipline: "Muay Thai",
       description: "Enfoque brutal en striking, acondicionamiento y sparring.",
-      image: imgMt
+      image: "" // Pega aquí el URL de la imagen del instructor de Muay Thai
     },
     {
       name: "Edson Suarez",
@@ -76,12 +74,14 @@ export default function Instructors() {
             className="group relative min-h-[500px] lg:min-h-[700px] border-b-8 md:border-b-0 md:border-r-8 border-zinc-950 overflow-hidden last:border-r-0"
           >
             {/* Background Image */}
-            <img
-              loading="lazy"
-              src={instructor.image}
-              alt={instructor.name}
-              className="absolute inset-0 w-full h-full object-cover grayscale contrast-125 brightness-75 group-hover:scale-105 group-hover:grayscale-0 group-hover:contrast-100 group-hover:brightness-90 transition-all duration-700 ease-in-out"
-            />
+            {instructor.image && (
+              <img
+                loading="lazy"
+                src={instructor.image}
+                alt={instructor.name}
+                className="absolute inset-0 w-full h-full object-cover grayscale contrast-125 brightness-75 group-hover:scale-105 group-hover:grayscale-0 group-hover:contrast-100 group-hover:brightness-90 transition-all duration-700 ease-in-out"
+              />
+            )}
 
             {/* Overlay Gradient for text readability */}
             <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/40 to-transparent opacity-90 group-hover:opacity-70 transition-opacity duration-500"></div>
