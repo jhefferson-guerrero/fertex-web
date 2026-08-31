@@ -34,7 +34,7 @@ export default function Preloader({ onComplete }) {
       <motion.div
         animate={{ scale: [1, 1.08, 1], opacity: [0.8, 1, 0.8] }}
         transition={{ duration: 2.2, repeat: Infinity, ease: "easeInOut" }}
-        className="flex flex-col items-center gap-6 px-4"
+        className="flex flex-col items-center gap-10 px-4"
       >
         <motion.img
           initial={{ opacity: 0, scale: 0.5, filter: 'blur(10px)' }}
