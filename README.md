@@ -40,7 +40,6 @@ Para correr este proyecto en tu propia computadora, sigue estos pasos:
    ```bash
    npm run dev
    ```
-   *El servidor se abrirá normalmente en `http://localhost:5173`.*
 
 ## 📦 Despliegue (Producción)
 
@@ -54,6 +53,3 @@ Para probar la versión de producción en local:
 npm run build
 npm run preview
 ```
-
----
-*Desarrollado con mentalidad de alto rendimiento.*
