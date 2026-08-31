@@ -1,16 +1,60 @@
-# React + Vite
+# FERTEX | Academia de Artes Marciales
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+Sitio web oficial de FERTEX, escuela de artes marciales con más de 24 años de experiencia en San Juan de Lurigancho. Especializados en Taekwondo ITF, Muay Thai y Capoeira.
 
-Currently, two official plugins are available:
+![FERTEX Preview](./public/preview.png)
+> **Nota para ti:** Para que la imagen de arriba aparezca en tu repositorio de GitHub, solo tienes que tomar una captura de pantalla de tu página web, nombrarla exactamente `preview.png` y guardarla dentro de la carpeta `public/` de este proyecto.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## 🚀 Tecnologías (Tech Stack)
 
-## React Compiler
+Este proyecto fue construido con un enfoque en rendimiento extremo, SEO y un diseño brutalista moderno:
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **Framework:** [React](https://react.dev/) + [Vite](https://vitejs.dev/)
+- **Estilos:** [Tailwind CSS](https://tailwindcss.com/)
+- **Animaciones:** [Framer Motion](https://www.framer.com/motion/)
+- **Scroll Suave:** [Lenis](https://lenis.studiofreight.com/)
+- **Despliegue:** [Vercel](https://vercel.com/)
 
-## Expanding the Oxlint configuration
+## ✨ Características Principales
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+- **Diseño Brutalista:** Alto contraste, tipografía masiva (Oswald/Inter) y uso de sombras pronunciadas para una estética ruda y moderna.
+- **Rendimiento Optimizado:** Carga casi instantánea, precarga de archivos y animaciones fluidas (60fps).
+- **Micro-interacciones:** Botones con efectos hover mecánicos, animaciones de entrada sincronizadas y un preloader personalizado.
+- **SEO Técnico Avanzado:** `sitemap.xml`, `robots.txt`, etiquetas Open Graph para redes sociales y datos estructurados (JSON-LD) para dominar la búsqueda de Google.
+
+## 🛠️ Desarrollo Local
+
+Para correr este proyecto en tu propia computadora, sigue estos pasos:
+
+1. **Clonar el repositorio:**
+   ```bash
+   git clone https://github.com/jhefferson-guerrero/fertex-web.git
+   cd fertex-web
+   ```
+
+2. **Instalar dependencias:**
+   ```bash
+   npm install
+   ```
+
+3. **Iniciar el servidor de desarrollo:**
+   ```bash
+   npm run dev
+   ```
+   *El servidor se abrirá normalmente en `http://localhost:5173`.*
+
+## 📦 Despliegue (Producción)
+
+El proyecto está configurado para despliegue continuo a través de **Vercel**. 
+Cualquier cambio subido (push) a la rama principal (`main`) en GitHub activará una actualización automática en la web oficial:
+
+👉 **[https://www.taekwondofertex.com](https://www.taekwondofertex.com)**
+
+Para probar la versión de producción en local:
+```bash
+npm run build
+npm run preview
+```
+
+---
+*Desarrollado con mentalidad de alto rendimiento.*
