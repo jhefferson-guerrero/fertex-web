@@ -3,7 +3,6 @@
 Sitio web oficial de FERTEX, escuela de artes marciales con más de 24 años de experiencia en San Juan de Lurigancho. Especializados en Taekwondo ITF, Muay Thai y Capoeira.
 
 ![FERTEX Preview](./public/preview.png)
-> **Nota para ti:** Para que la imagen de arriba aparezca en tu repositorio de GitHub, solo tienes que tomar una captura de pantalla de tu página web, nombrarla exactamente `preview.png` y guardarla dentro de la carpeta `public/` de este proyecto.
 
 ## 🚀 Tecnologías (Tech Stack)
 
