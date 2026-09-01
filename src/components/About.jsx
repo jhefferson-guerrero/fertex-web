@@ -139,7 +139,7 @@ export default function About() {
 
         {/* Text Column - Modular Layout */}
         <motion.div 
-          className="w-full flex flex-col relative bg-white border-b-8 lg:border-b-0 border-zinc-950"
+          className="w-full flex flex-col relative bg-white"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"

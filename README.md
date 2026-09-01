@@ -1,8 +1,11 @@
-# FERTEX | Academia de Artes Marciales
+# 🥋 FERTEX | Academia de Artes Marciales
 
-Sitio web oficial de FERTEX, escuela de artes marciales con más de 24 años de experiencia en San Juan de Lurigancho. Especializados en Taekwondo ITF, Muay Thai y Capoeira.
+![React](https://img.shields.io/badge/REACT-19.2.8-00D8FF?logo=react&logoColor=white&labelColor=333333&style=for-the-badge) ![Vite](https://img.shields.io/badge/VITE-8.2.2-646CFF?logo=vite&logoColor=white&labelColor=333333&style=for-the-badge) ![Tailwind CSS](https://img.shields.io/badge/TAILWIND_CSS-3.4.19-38B2AC?logo=tailwind-css&logoColor=white&labelColor=333333&style=for-the-badge) ![Framer Motion](https://img.shields.io/badge/FRAMER_MOTION-13.1.1-0055FF?logo=framer&logoColor=white&labelColor=333333&style=for-the-badge)
+
 
 ![FERTEX Preview](./public/preview.png)
+
+Sitio web oficial de FERTEX, escuela de artes marciales con más de 24 años de experiencia en San Juan de Lurigancho. Especializados en Taekwondo ITF, Muay Thai y Capoeira.
 
 ## 🚀 Tecnologías (Tech Stack)
 
