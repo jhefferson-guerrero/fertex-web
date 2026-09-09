@@ -5,7 +5,8 @@ import Preloader from './components/Preloader';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import About from './components/About';
-import Marquee from './components/Marquee';
+import VideoBanner from './components/VideoBanner';
+import CustomCursor from './components/CustomCursor';
 import Gallery from './components/Gallery';
 import Instructors from './components/Instructors';
 import Location from './components/Location';
@@ -56,6 +57,7 @@ function App() {
 
   return (
     <>
+      <CustomCursor />
       <AnimatePresence>
         {isLoading && <Preloader key="preloader" onComplete={() => setIsLoading(false)} />}
       </AnimatePresence>
@@ -66,7 +68,7 @@ function App() {
       <main className="pt-24">
         <Hero />
         <About />
-        <Marquee />
+        <VideoBanner />
         <Gallery />
         <Instructors />
         <CallToAction />

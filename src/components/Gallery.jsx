@@ -20,17 +20,17 @@ export default function Gallery() {
 
   return (
     <section id="gallery" className="bg-white border-b-8 border-zinc-950">
-      <motion.div
-        className="w-full flex flex-col lg:flex-row"
-        variants={containerVariants}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, margin: "-100px" }}
-      >
+      <div className="w-full flex flex-col lg:flex-row">
 
         {/* Left Column - Intro text and 1 Image */}
-        <motion.div variants={itemVariants} className="w-full lg:w-1/3 flex flex-col border-b-8 lg:border-b-0 lg:border-r-8 border-zinc-950">
-          <div className="p-8 lg:p-12 xl:p-16 border-b-8 border-zinc-950 bg-zinc-50 flex-grow flex flex-col justify-center">
+        <div className="w-full lg:w-1/3 flex flex-col border-b-8 lg:border-b-0 lg:border-r-8 border-zinc-950">
+          <motion.div 
+            initial={{ opacity: 0, y: 50 }} 
+            whileInView={{ opacity: 1, y: 0 }} 
+            viewport={{ once: true, margin: "-50px" }} 
+            transition={{ duration: 0.5, ease: 'easeOut', delay: 0 }} 
+            className="p-8 lg:p-12 xl:p-16 border-b-8 border-zinc-950 bg-zinc-50 flex-grow flex flex-col justify-center"
+          >
             <h2 className="font-display font-black text-5xl md:text-6xl xl:text-7xl uppercase text-zinc-950 tracking-tighter leading-none mb-6">
               Futuros <br />
               <span className="text-fertex-red">Campeones</span>
@@ -38,29 +38,48 @@ export default function Gallery() {
             <p className="font-sans text-lg text-zinc-800 leading-relaxed font-medium">
               Forjamos carácter desde los primeros pasos. Nuestras clases no son un juego; son el inicio de un camino donde el respeto, la constancia y la verdadera disciplina se demuestran en el tatami.
             </p>
-          </div>
-          <div className="relative min-h-[300px] lg:min-h-[400px] flex-grow group overflow-hidden">
+          </motion.div>
+          <motion.div 
+            initial={{ opacity: 0, y: 50 }} 
+            whileInView={{ opacity: 1, y: 0 }} 
+            viewport={{ once: true, margin: "-50px" }} 
+            transition={{ duration: 0.5, ease: 'easeOut', delay: 0.1 }} 
+            className="relative min-h-[300px] lg:min-h-[400px] flex-grow group overflow-hidden"
+          >
             <img src={imgCapoeira} alt="Capoeira Kids" loading="lazy" className="absolute inset-0 w-full h-full object-cover grayscale contrast-125 group-hover:scale-105 transition-transform duration-700" />
             <div className="absolute inset-0 bg-zinc-950/20 group-hover:bg-transparent transition-colors duration-500"></div>
 
-          </div>
-        </motion.div>
+          </motion.div>
+        </div>
 
         {/* Center Column - 1 Tall Image */}
-        <motion.div variants={itemVariants} className="w-full lg:w-1/3 relative min-h-[400px] lg:min-h-[800px] border-b-8 lg:border-b-0 lg:border-r-8 border-zinc-950 overflow-hidden group">
-          <img src={imgTkd} alt="Taekwondo Kids" loading="lazy" className="absolute inset-0 w-full h-full object-cover grayscale contrast-[1.15] brightness-90 group-hover:scale-105 transition-transform duration-700" />
-          <div className="absolute inset-0 bg-zinc-950/20 group-hover:bg-transparent transition-colors duration-500"></div>
-
-        </motion.div>
+        <div className="w-full lg:w-1/3 border-b-8 lg:border-b-0 lg:border-r-8 border-zinc-950">
+          <motion.div 
+            initial={{ opacity: 0, y: 50 }} 
+            whileInView={{ opacity: 1, y: 0 }} 
+            viewport={{ once: true, margin: "-50px" }} 
+            transition={{ duration: 0.5, ease: 'easeOut', delay: 0.2 }} 
+            className="relative w-full h-full min-h-[400px] lg:min-h-[800px] overflow-hidden group"
+          >
+            <img src={imgTkd} alt="Taekwondo Kids" loading="lazy" className="absolute inset-0 w-full h-full object-cover grayscale contrast-[1.15] brightness-90 group-hover:scale-105 transition-transform duration-700" />
+          </motion.div>
+        </div>
 
         {/* Right Column - 1 Image */}
-        <motion.div variants={itemVariants} className="w-full lg:w-1/3 relative min-h-[400px] lg:min-h-[800px] overflow-hidden group">
-          <img src={imgMt} alt="Muay Thai Youth" loading="lazy" className="absolute inset-0 w-full h-full object-cover grayscale contrast-[1.15] brightness-90 group-hover:scale-105 transition-transform duration-700" />
-          <div className="absolute inset-0 bg-zinc-950/20 group-hover:bg-transparent transition-colors duration-500"></div>
+        <div className="w-full lg:w-1/3">
+          <motion.div 
+            initial={{ opacity: 0, y: 50 }} 
+            whileInView={{ opacity: 1, y: 0 }} 
+            viewport={{ once: true, margin: "-50px" }} 
+            transition={{ duration: 0.5, ease: 'easeOut', delay: 0.3 }} 
+            className="relative w-full h-full min-h-[400px] lg:min-h-[800px] overflow-hidden group"
+          >
+            <img src={imgMt} alt="Muay Thai Youth" loading="lazy" className="absolute inset-0 w-full h-full object-cover grayscale contrast-[1.15] brightness-90 group-hover:scale-105 transition-transform duration-700" />
+            <div className="absolute inset-0 bg-zinc-950/20 group-hover:bg-transparent transition-colors duration-500"></div>
+          </motion.div>
+        </div>
 
-        </motion.div>
-
-      </motion.div>
+      </div>
     </section>
   );
 }

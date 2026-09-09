@@ -138,16 +138,10 @@ export default function About() {
         </div>
 
         {/* Text Column - Modular Layout */}
-        <motion.div 
-          className="w-full flex flex-col relative bg-white"
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-        >
+        <div className="w-full flex flex-col relative bg-white">
 
           {/* Header Section */}
-          <motion.div variants={itemVariants} className="p-8 lg:p-12 xl:p-16 border-b-8 border-zinc-950">
+          <motion.div variants={itemVariants} initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }} className="p-8 lg:p-12 xl:p-16 border-b-8 border-zinc-950">
             <h2 className="font-display font-black text-6xl md:text-7xl uppercase text-zinc-950 tracking-tighter leading-none mb-6">
               Sobre <br />
               <span className="text-fertex-red">Nosotros</span>
@@ -163,12 +157,12 @@ export default function About() {
           </motion.div>
 
           {/* Mobile Only Visual Column (Interleaved) */}
-          <motion.div variants={itemVariants} className="block lg:hidden w-full relative min-h-[350px] border-b-8 border-zinc-950">
+          <motion.div variants={itemVariants} initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }} className="block lg:hidden w-full relative min-h-[350px] border-b-8 border-zinc-950">
             <img src={aboutImage} alt="Entrenamiento FERTEX" loading="lazy" className="absolute inset-0 w-full h-full object-cover grayscale contrast-125 brightness-90" />
           </motion.div>
 
           {/* Modular Data / Bento Section */}
-          <motion.div variants={itemVariants} className="flex flex-col sm:flex-row border-b-8 border-zinc-950">
+          <motion.div variants={itemVariants} initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }} className="flex flex-col sm:flex-row border-b-8 border-zinc-950">
             {/* Data Box 1 */}
             <div className="flex-1 p-8 border-b-8 sm:border-b-0 sm:border-r-8 border-zinc-950 flex flex-col justify-center items-start bg-zinc-50">
               <span className="font-display font-black text-5xl md:text-6xl text-fertex-red tracking-tighter leading-none">24</span>
@@ -182,7 +176,7 @@ export default function About() {
           </motion.div>
 
           {/* Disciplines List */}
-          <motion.div variants={itemVariants} className="flex flex-col flex-grow bg-zinc-50">
+          <motion.div variants={itemVariants} initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }} className="flex flex-col flex-grow bg-zinc-50">
             {disciplines.map((discipline, index) => (
               <div
                 key={index}
@@ -202,7 +196,7 @@ export default function About() {
             ))}
           </motion.div>
 
-        </motion.div>
+        </div>
       </div>
     </section>
   );

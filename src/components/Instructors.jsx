@@ -60,17 +60,14 @@ export default function Instructors() {
       </motion.div>
 
       {/* 3-Column Grid */}
-      <motion.div 
-        className="w-full grid grid-cols-1 md:grid-cols-3"
-        variants={containerVariants}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, margin: "-100px" }}
-      >
+      <div className="w-full grid grid-cols-1 md:grid-cols-3">
         {instructors.map((instructor, index) => (
           <motion.div
-            variants={itemVariants}
             key={index}
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.15 }}
+            transition={{ duration: 0.5, ease: 'easeOut', delay: index * 0.2 }}
             className="group relative min-h-[500px] lg:min-h-[700px] border-b-8 md:border-b-0 md:border-r-8 border-zinc-950 overflow-hidden last:border-r-0"
           >
             {/* Background Image */}
@@ -110,7 +107,7 @@ export default function Instructors() {
             </div>
           </motion.div>
         ))}
-      </motion.div>
+      </div>
 
     </section>
   );
