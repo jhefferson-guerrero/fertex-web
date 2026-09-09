@@ -1,7 +1,7 @@
 import React from 'react';
 import imgBg from '../assets/images/fertex-taekwondo-maestros-instructores-01.webp';
 
-export default function Marquee() {
+export default function VideoBanner() {
   return (
     <section className="relative w-full min-h-[500px] md:min-h-[600px] lg:h-[80vh] border-b-8 border-zinc-950 overflow-hidden bg-zinc-950">
       
