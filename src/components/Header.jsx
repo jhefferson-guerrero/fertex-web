@@ -1,9 +1,19 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import logoFertex from '../assets/images/logo-fertex.webp';
 
 export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  // Accesibilidad: cerrar el menú móvil con la tecla Escape
+  useEffect(() => {
+    if (!isMobileMenuOpen) return;
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape') setIsMobileMenuOpen(false);
+    };
+    document.addEventListener('keydown', handleKeyDown);
+    return () => document.removeEventListener('keydown', handleKeyDown);
+  }, [isMobileMenuOpen]);
 
   return (
     <header className="border-b-8 border-zinc-950 bg-white fixed top-0 w-full z-50">
@@ -45,11 +55,13 @@ export default function Header() {
           <div className="md:hidden flex items-center">
             <button 
               type="button" 
-              aria-label="Abrir menú" 
-              className="text-zinc-950 focus:outline-none p-2 border-2 border-zinc-950 bg-zinc-50 hover:bg-zinc-100"
+              aria-label={isMobileMenuOpen ? 'Cerrar menú' : 'Abrir menú'}
+              aria-expanded={isMobileMenuOpen}
+              aria-controls="mobile-menu"
+              className="text-zinc-950 p-2 border-2 border-zinc-950 bg-zinc-50 hover:bg-zinc-100"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             >
-              <svg className="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <svg aria-hidden="true" className="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 {isMobileMenuOpen ? (
                    <path strokeLinecap="square" strokeLinejoin="miter" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
                 ) : (
@@ -65,6 +77,7 @@ export default function Header() {
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
+            id="mobile-menu"
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}

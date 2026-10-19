@@ -1,23 +1,63 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import aboutImage from '../assets/images/fertex-taekwondo-competencia-03.webp';
 
+const FOCUSABLE = 'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])';
+
 export default function About() {
   const [activeModal, setActiveModal] = useState(null);
+  const dialogRef = useRef(null);
+  const triggerRef = useRef(null);
+
+  const openModal = (discipline, e) => {
+    triggerRef.current = e.currentTarget;
+    setActiveModal(discipline);
+  };
 
   // UX Fix: Bloquear el scroll del fondo cuando un modal está abierto
+  // (Lenis intercepta la rueda del mouse, por eso también se detiene con lenis.stop())
   useEffect(() => {
-    if (activeModal) {
-      document.body.classList.add('overflow-hidden');
-      document.documentElement.classList.add('overflow-hidden');
-    } else {
-      document.body.classList.remove('overflow-hidden');
-      document.documentElement.classList.remove('overflow-hidden');
-    }
-    // Limpieza en caso de que el componente se desmonte
+    if (!activeModal) return;
+    document.body.classList.add('overflow-hidden');
+    document.documentElement.classList.add('overflow-hidden');
+    window.lenis?.stop();
     return () => {
       document.body.classList.remove('overflow-hidden');
       document.documentElement.classList.remove('overflow-hidden');
+      window.lenis?.start();
+    };
+  }, [activeModal]);
+
+  // Accesibilidad: foco inicial, Escape para cerrar, foco atrapado y retorno del foco
+  useEffect(() => {
+    if (!activeModal) return;
+    const trigger = triggerRef.current;
+    dialogRef.current?.focus();
+
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape') {
+        setActiveModal(null);
+        return;
+      }
+      if (e.key !== 'Tab' || !dialogRef.current) return;
+      const items = dialogRef.current.querySelectorAll(FOCUSABLE);
+      if (items.length === 0) return;
+      const first = items[0];
+      const last = items[items.length - 1];
+      const active = document.activeElement;
+      if (e.shiftKey && (active === first || active === dialogRef.current)) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && active === last) {
+        e.preventDefault();
+        first.focus();
+      }
+    };
+
+    document.addEventListener('keydown', handleKeyDown);
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+      trigger?.focus();
     };
   }, [activeModal]);
 
@@ -66,22 +106,22 @@ export default function About() {
               exit={{ opacity: 0 }}
               className="absolute inset-0 bg-zinc-950/80 backdrop-blur-sm" 
               onClick={() => setActiveModal(null)}
-              role="button"
-              tabIndex={0}
-              onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); setActiveModal(null); } }}
-              aria-label="Cerrar modal"
+              aria-hidden="true"
             ></motion.div>
-            
+
             {/* Modal Content - Brutalist Box */}
-            <motion.div 
+            <motion.div
+              ref={dialogRef}
+              tabIndex={-1}
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: 40 }}
               transition={{ type: "spring", stiffness: 400, damping: 30 }}
-              className="relative bg-white border-8 border-zinc-950 w-full max-w-2xl shadow-[16px_16px_0px_0px_rgba(24,24,27,1)] flex flex-col"
+              className="relative bg-white border-8 border-zinc-950 w-full max-w-2xl shadow-[16px_16px_0px_0px_rgba(24,24,27,1)] flex flex-col outline-none"
               role="dialog"
               aria-modal="true"
               aria-labelledby="modal-title"
+              aria-describedby="modal-description"
             >
               
               {/* Header */}
@@ -108,7 +148,7 @@ export default function About() {
                     </span>
                   ))}
                 </div>
-                <p className="font-sans text-lg md:text-xl text-zinc-800 leading-relaxed font-medium">
+                <p id="modal-description" className="font-sans text-lg md:text-xl text-zinc-800 leading-relaxed font-medium">
                   {activeModal.description}
                 </p>
                 
@@ -178,21 +218,20 @@ export default function About() {
           {/* Disciplines List */}
           <motion.div variants={itemVariants} initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }} className="flex flex-col flex-grow bg-zinc-50">
             {disciplines.map((discipline, index) => (
-              <div
+              <button
                 key={index}
-                role="button"
-                tabIndex={0}
-                onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); setActiveModal(discipline); } }}
-                onClick={() => setActiveModal(discipline)}
-                className={`group flex items-center justify-between p-6 lg:p-8 hover:bg-fertex-red hover:text-white transition-colors duration-200 cursor-pointer ${index !== disciplines.length - 1 ? 'border-b-8 border-zinc-950' : ''}`}
+                type="button"
+                aria-haspopup="dialog"
+                onClick={(e) => openModal(discipline, e)}
+                className={`group w-full text-left flex items-center justify-between p-6 lg:p-8 hover:bg-fertex-red hover:text-white transition-colors duration-200 cursor-pointer ${index !== disciplines.length - 1 ? 'border-b-8 border-zinc-950' : ''}`}
               >
                 <span className="font-display font-bold text-3xl md:text-4xl uppercase tracking-tighter text-zinc-950 group-hover:text-white transition-colors">
                   {discipline.title}
                 </span>
-                <svg className="w-8 h-8 text-zinc-950 group-hover:text-white transform group-hover:translate-x-2 transition-all duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg aria-hidden="true" className="w-8 h-8 text-zinc-950 group-hover:text-white transform group-hover:translate-x-2 transition-all duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="square" strokeLinejoin="miter" strokeWidth="3" d="M17 8l4 4m0 0l-4 4m4-4H3" />
                 </svg>
-              </div>
+              </button>
             ))}
           </motion.div>
 

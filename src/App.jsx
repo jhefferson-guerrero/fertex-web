@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { AnimatePresence } from 'framer-motion';
+import React, { useState, useEffect, useCallback } from 'react';
+import { AnimatePresence, MotionConfig } from 'framer-motion';
 import Lenis from 'lenis';
 import Preloader from './components/Preloader';
 import Header from './components/Header';
@@ -17,13 +17,31 @@ import WhatsAppButton from './components/WhatsAppButton';
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
+  const handleLoaded = useCallback(() => setIsLoading(false), []);
 
   useEffect(() => {
+    // Accesibilidad: respetar la preferencia "reducir movimiento" del sistema (scroll nativo)
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      const handleReducedAnchorClick = (e) => {
+        const target = e.target.closest('a');
+        const href = target?.getAttribute('href');
+        if (!href?.startsWith('#')) return;
+        e.preventDefault();
+        if (href === '#') {
+          window.scrollTo({ top: 0 });
+        } else {
+          const section = document.querySelector(href);
+          if (section) window.scrollTo({ top: section.getBoundingClientRect().top + window.scrollY - 96 });
+        }
+      };
+      document.addEventListener('click', handleReducedAnchorClick);
+      return () => document.removeEventListener('click', handleReducedAnchorClick);
+    }
+
     // Opción 2: Scroll Inercial Ultra-Premium con Lenis
     const lenis = new Lenis({
       duration: 1.2,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-      smooth: true,
     });
     window.lenis = lenis;
 
@@ -56,16 +74,23 @@ function App() {
   }, []);
 
   return (
-    <>
+    <MotionConfig reducedMotion="user">
       <CustomCursor />
       <AnimatePresence>
-        {isLoading && <Preloader key="preloader" onComplete={() => setIsLoading(false)} />}
+        {isLoading && <Preloader key="preloader" onComplete={handleLoaded} />}
       </AnimatePresence>
 
       {!isLoading && (
         <div className="min-h-screen bg-zinc-50 selection:bg-fertex-red selection:text-white">
+      <a
+        href="#main"
+        onClick={() => document.getElementById('main')?.focus({ preventScroll: true })}
+        className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[10000] focus:bg-fertex-red focus:text-white focus:px-4 focus:py-3 focus:font-bold focus:uppercase focus:tracking-widest focus:border-4 focus:border-zinc-950"
+      >
+        Saltar al contenido
+      </a>
       <Header />
-      <main className="pt-24">
+      <main id="main" tabIndex={-1} className="pt-24 outline-none">
         <Hero />
         <About />
         <VideoBanner />
@@ -79,7 +104,7 @@ function App() {
       <BackToTop />
         </div>
       )}
-    </>
+    </MotionConfig>
   );
 }
 

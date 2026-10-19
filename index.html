@@ -23,16 +23,58 @@
   <meta property="og:title" content="FERTEX | Academia de Artes Marciales" />
   <meta property="og:description"
     content="Únete a FERTEX. Más de 24 años de experiencia forjando disciplina a través del Taekwondo, Muay Thai y Capoeira." />
+  <meta property="og:locale" content="es_PE" />
   <meta property="og:image" content="https://www.taekwondofertex.com/og-image.png" />
+  <meta property="og:image:type" content="image/jpeg" />
+  <meta property="og:image:width" content="1024" />
+  <meta property="og:image:height" content="1024" />
+  <meta property="og:image:alt" content="FERTEX, Academia de Artes Marciales" />
 
-  <!-- Schema.org for Google Search (Site Name) -->
+  <!-- Twitter / X -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="FERTEX | Academia de Artes Marciales" />
+  <meta name="twitter:description"
+    content="Más de 24 años de experiencia forjando disciplina a través del Taekwondo, Muay Thai y Capoeira en San Juan de Lurigancho." />
+  <meta name="twitter:image" content="https://www.taekwondofertex.com/og-image.png" />
+
+  <!-- Color de la barra del navegador en móvil -->
+  <meta name="theme-color" content="#09090b" />
+
+  <!-- Schema.org para Google (Nombre del sitio + Negocio local) -->
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "WebSite",
-      "name": "FERTEX",
-      "alternateName": ["Taekwondo Fertex", "Fertex Artes Marciales", "Academia Fertex"],
-      "url": "https://www.taekwondofertex.com/"
+      "@graph": [
+        {
+          "@type": "WebSite",
+          "@id": "https://www.taekwondofertex.com/#website",
+          "name": "FERTEX",
+          "alternateName": ["Taekwondo Fertex", "Fertex Artes Marciales", "Academia Fertex"],
+          "url": "https://www.taekwondofertex.com/",
+          "inLanguage": "es-PE"
+        },
+        {
+          "@type": ["SportsActivityLocation", "LocalBusiness"],
+          "@id": "https://www.taekwondofertex.com/#organization",
+          "name": "FERTEX Villa Flores",
+          "description": "Academia de artes marciales con más de 24 años de experiencia. Enseñanza de Taekwondo ITF, Muay Thai y Capoeira.",
+          "url": "https://www.taekwondofertex.com/",
+          "image": "https://www.taekwondofertex.com/og-image.png",
+          "telephone": "+51944351592",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Av. los Jardines Este 609",
+            "addressLocality": "San Juan de Lurigancho",
+            "addressRegion": "Lima",
+            "postalCode": "15431",
+            "addressCountry": "PE"
+          },
+          "sameAs": [
+            "https://www.facebook.com/FertexVillaFloress/",
+            "https://www.instagram.com/fertexvillaflores/"
+          ]
+        }
+      ]
     }
   </script>
 
@@ -47,6 +89,22 @@
 
 <body style="background-color: #09090b;">
   <div id="root"></div>
+  <noscript>
+    <main style="max-width: 640px; margin: 0 auto; padding: 32px 16px; font-family: Arial, sans-serif; color: #fafafa;">
+      <h1 style="text-transform: uppercase;">FERTEX | Academia de Artes Marciales</h1>
+      <p>Escuela de artes marciales con más de 24 años de experiencia forjando disciplina en San Juan de Lurigancho. Especialistas en la enseñanza de Taekwondo ITF, Muay Thai y Capoeira.</p>
+      <h2>Disciplinas</h2>
+      <ul>
+        <li>Taekwondo ITF</li>
+        <li>Muay Thai</li>
+        <li>Capoeira</li>
+      </ul>
+      <h2>Contacto</h2>
+      <p>Av. los Jardines Este 609, San Juan de Lurigancho 15431</p>
+      <p>Teléfono y WhatsApp: <a href="https://wa.me/51944351592" style="color: #ff4d4d;">+51 944 351 592</a></p>
+      <p>Para ver el sitio completo, activa JavaScript en tu navegador.</p>
+    </main>
+  </noscript>
   <script type="module" src="/src/main.jsx"></script>
 </body>
 

@@ -68,6 +68,7 @@ export default function Instructors() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.15 }}
             transition={{ duration: 0.5, ease: 'easeOut', delay: index * 0.2 }}
+            tabIndex={0}
             className="group relative min-h-[500px] lg:min-h-[700px] border-b-8 md:border-b-0 md:border-r-8 border-zinc-950 overflow-hidden last:border-r-0"
           >
             {/* Background Image */}
@@ -86,9 +87,9 @@ export default function Instructors() {
             {/* Content Container */}
             <div className="absolute inset-0 p-8 flex flex-col justify-end z-10">
 
-              {/* Animated Detail Box (Slides up on hover) */}
+              {/* Detail Box: siempre visible en pantallas táctiles; en escritorio (con mouse) aparece al hacer hover o enfocar */}
               <div className="overflow-hidden mb-4">
-                <div className="translate-y-[120%] opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 ease-out flex flex-col gap-3">
+                <div className="[@media(hover:hover)]:translate-y-[120%] [@media(hover:hover)]:opacity-0 [@media(hover:hover)]:group-hover:translate-y-0 [@media(hover:hover)]:group-hover:opacity-100 [@media(hover:hover)]:group-focus-visible:translate-y-0 [@media(hover:hover)]:group-focus-visible:opacity-100 transition-all duration-500 ease-out flex flex-col gap-3">
                   <span className="bg-fertex-red text-white w-max px-3 py-1 font-bold uppercase tracking-widest text-xs border-2 border-zinc-950 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
                     {instructor.discipline}
                   </span>

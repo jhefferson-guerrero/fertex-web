@@ -1,25 +1,52 @@
 import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import logoFertex from '../assets/images/logo-fertex.webp';
-
 import fondoInicio from '../assets/images/fondo-inicio.webp';
-import handWraps from '../assets/images/hand_wraps.jpg';
+
+// Tiempo mínimo en pantalla (evita un parpadeo si todo ya está en caché)
+const MIN_TIME = 800;
+// Tiempo máximo de espera (por si la red es muy lenta, nunca bloqueamos el sitio)
+const MAX_TIME = 4000;
+
+const loadImage = (src) =>
+  new Promise((resolve) => {
+    const img = new Image();
+    img.onload = resolve;
+    img.onerror = resolve; // Si falla, no bloqueamos la carga
+    img.src = src;
+  });
+
+// Fuerza la descarga de las fuentes que usa el Hero antes de mostrar el sitio
+const loadFonts = () =>
+  Promise.all([
+    document.fonts.load('700 1em Oswald'),
+    document.fonts.load('500 1em Oswald'),
+    document.fonts.load('400 1em Inter'),
+    document.fonts.load('600 1em Inter'),
+  ]).then(() => document.fonts.ready);
 
 export default function Preloader({ onComplete }) {
   useEffect(() => {
-    // PRECARGA SECRETA: Obligamos al navegador a descargar las fotos del Hero en segundo plano
-    // mientras el usuario está distraído con la animación del escudo.
-    const img1 = new Image();
-    img1.src = fondoInicio;
-    
-    const img2 = new Image();
-    img2.src = handWraps;
+    let cancelled = false;
+    let maxTimer;
+    let minTimer;
 
-    // 2.5s delay
-    const timer = setTimeout(() => {
-      onComplete();
-    }, 2500);
-    return () => clearTimeout(timer);
+    const finish = () => {
+      if (!cancelled) onComplete();
+    };
+
+    const assetsReady = Promise.all([loadFonts(), loadImage(fondoInicio), loadImage(logoFertex)]).catch(() => {});
+    const minElapsed = new Promise((resolve) => { minTimer = setTimeout(resolve, MIN_TIME); });
+    const maxElapsed = new Promise((resolve) => { maxTimer = setTimeout(resolve, MAX_TIME); });
+
+    // Se muestra el sitio cuando todo cargó (y pasó el mínimo), o al llegar al máximo
+    Promise.race([Promise.all([assetsReady, minElapsed]), maxElapsed]).then(finish);
+
+    return () => {
+      cancelled = true;
+      clearTimeout(minTimer);
+      clearTimeout(maxTimer);
+    };
   }, [onComplete]);
 
   return (
@@ -28,7 +55,7 @@ export default function Preloader({ onComplete }) {
       initial={{ y: 0 }}
       exit={{
         y: '-100%',
-        transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] }
+        transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] }
       }}
     >
       <motion.div
@@ -45,15 +72,14 @@ export default function Preloader({ onComplete }) {
           className="w-40 md:w-48 h-auto drop-shadow-[0_0_30px_rgba(204,0,0,0.5)]"
         />
 
-        {/* Progress text or loading indicator */}
-        <motion.h1 
+        <motion.p
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
           className="font-display font-black text-xl md:text-2xl text-zinc-400 tracking-[0.3em] uppercase"
         >
           Preparando <span className="text-white">Tatami</span>
-        </motion.h1>
+        </motion.p>
       </motion.div>
     </motion.div>
   );

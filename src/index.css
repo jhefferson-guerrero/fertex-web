@@ -318,9 +318,49 @@
   body {
     @apply bg-zinc-50 text-zinc-950 font-sans;
   }
+
+  /* Accesibilidad: indicador de foco solo para navegación con teclado (no afecta al mouse ni al tacto) */
+  :focus-visible {
+    outline: 4px solid #CC0000;
+    outline-offset: 3px;
+  }
+
+  /* Sobre fondos oscuros o rojos, el foco se ve en blanco */
+  footer :focus-visible,
+  #instructors :focus-visible {
+    outline-color: #ffffff;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
 
 @layer utilities {
+  /*
+   * Alturas de sección a pantalla completa.
+   * 100vh en móvil incluye la barra del navegador y desborda la pantalla; svh usa el alto
+   * visible con las barras mostradas. La línea con vh queda de respaldo para navegadores antiguos.
+   * En escritorio svh == vh, así que el diseño no cambia.
+   */
+  .min-h-hero {
+    min-height: calc(100vh - 96px);
+    min-height: calc(100svh - 96px);
+  }
+
+  @media (min-width: 1024px) {
+    .lg-h-banner {
+      height: 80vh;
+      height: 80svh;
+    }
+  }
+
   .animate-marquee {
     animation: marquee 25s linear infinite;
   }

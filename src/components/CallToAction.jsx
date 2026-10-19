@@ -1,6 +1,5 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import imgCta from '../assets/images/fertex-muaythai-entrenamiento-05.webp';
 
 export default function CallToAction() {
   return (
@@ -22,13 +21,13 @@ export default function CallToAction() {
         </h2>
 
         <div className="mb-12">
-          <p className="font-sans text-lg md:text-xl text-zinc-950 font-bold uppercase tracking-[0.2em]">
+          <p className="font-sans text-xl text-zinc-950 font-bold uppercase tracking-[0.2em]">
             Da el primer paso. El tatami te espera.
           </p>
         </div>
 
         {/* Premium CTA Button - Now Black to stand out against the Red background */}
-        <a href="https://wa.me/51944351592?text=Hola%20FERTEX,%20quiero%20agendar%20mi%20clase%20de%20prueba%20gratis." target="_blank" rel="noopener noreferrer" className="inline-block bg-zinc-950 text-white text-lg md:text-xl font-bold uppercase tracking-widest px-10 py-5 border-4 border-zinc-950 hover:bg-white hover:border-white hover:text-zinc-950 transition-all duration-300 shadow-[8px_8px_0px_0px_rgba(255,255,255,1)] hover:shadow-none hover:translate-x-2 hover:translate-y-2">
+        <a href="https://wa.me/51944351592?text=Hola%20FERTEX,%20quiero%20agendar%20mi%20clase%20de%20prueba%20gratis." target="_blank" rel="noopener noreferrer" className="inline-block focus-visible:outline-white bg-zinc-950 text-white text-lg md:text-xl font-bold uppercase tracking-widest px-10 py-5 border-4 border-zinc-950 hover:bg-white hover:border-white hover:text-zinc-950 transition-all duration-300 shadow-[8px_8px_0px_0px_rgba(255,255,255,1)] hover:shadow-none hover:translate-x-2 hover:translate-y-2">
           Agenda tu Clase de Prueba
         </a>
 

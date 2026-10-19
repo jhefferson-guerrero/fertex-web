@@ -4,10 +4,10 @@ import fondoInicio from '../assets/images/fondo-inicio.webp';
 
 export default function Hero() {
   return (
-    <section className="relative border-b-8 border-zinc-950 overflow-hidden flex flex-col lg:flex-row min-h-[calc(100vh-96px)] lg:h-[calc(100vh-96px)]">
+    <section className="relative border-b-8 border-zinc-950 overflow-hidden flex flex-col lg:flex-row min-h-hero">
 
       {/* LEFT COLUMN */}
-      <div className="w-full lg:w-1/2 relative z-10 py-16 px-4 sm:px-6 lg:px-8 xl:px-12 lg:py-0 flex flex-col justify-center border-b-8 lg:border-b-0 lg:border-r-8 border-zinc-950 bg-zinc-50">
+      <div className="w-full lg:w-1/2 relative z-10 py-16 px-4 sm:px-6 lg:px-8 xl:px-12 lg:py-8 flex flex-col justify-center border-b-8 lg:border-b-0 lg:border-r-8 border-zinc-950 bg-zinc-50">
 
         <motion.div
           className="relative z-20"

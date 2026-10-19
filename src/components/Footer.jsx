@@ -27,7 +27,7 @@ export default function Footer() {
             <p>San Juan de Lurigancho 15431</p>
           </div>
           <div className="mt-auto">
-            <p className="uppercase font-bold tracking-widest text-zinc-500 text-xs md:text-sm mb-1">Teléfono Directo</p>
+            <p className="uppercase font-bold tracking-widest text-zinc-400 text-xs md:text-sm mb-1">Teléfono Directo</p>
             <a href="tel:+51944351592" className="font-sans text-xl md:text-xl font-bold text-white hover:text-fertex-red transition-colors block">+51 944 351 592</a>
           </div>
         </div>
@@ -51,10 +51,10 @@ export default function Footer() {
 
       {/* Copyright Bar */}
       <div className="w-full bg-black border-t-8 border-zinc-800 p-6 flex flex-col md:flex-row justify-between items-center gap-4">
-        <p className="text-zinc-500 font-sans font-bold uppercase tracking-widest text-xs">
+        <p className="text-zinc-400 font-sans font-bold uppercase tracking-widest text-xs">
           &copy; {new Date().getFullYear()} FERTEX ACADEMIA.
         </p>
-        <p className="text-zinc-600 font-sans font-bold uppercase tracking-widest text-xs">
+        <p className="text-zinc-400 font-sans font-bold uppercase tracking-widest text-xs">
           FUTUROS CAMPEONES.
         </p>
       </div>
