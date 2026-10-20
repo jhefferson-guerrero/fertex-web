@@ -381,11 +381,11 @@
   }
 
   @media (min-width: 1024px) {
-    /* El banner ocupa toda la pantalla visible (igual que el Hero y la galería) */
+    /* El banner es un 10% más alto que la pantalla visible: la foto se aprecia más y la barra de la frase queda justo debajo */
     .lg-h-banner {
-      height: calc(100vh - var(--header-h));
-      height: calc(100svh - var(--header-h));
-      min-height: 460px;
+      height: calc((100vh - var(--header-h)) * 1.1);
+      height: calc((100svh - var(--header-h)) * 1.1);
+      min-height: 520px;
     }
   }
 

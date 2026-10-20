@@ -8,7 +8,7 @@ export default function Hero() {
     <section className="relative border-b-8 border-zinc-950 overflow-hidden flex flex-col lg:flex-row min-h-hero">
 
       {/* LEFT COLUMN */}
-      <div className="w-full lg:w-1/2 relative z-10 py-16 px-4 sm:px-6 lg:px-8 xl:px-12 lg:py-8 flex flex-col justify-center lg:border-r-8 border-zinc-950 bg-zinc-50">
+      <div className="w-full lg:w-1/2 relative z-10 py-8 sm:py-12 px-4 sm:px-6 lg:px-8 xl:px-12 lg:py-8 min-h-[calc(100svh-var(--header-h))] lg:min-h-0 flex flex-col justify-center lg:border-r-8 border-zinc-950 bg-zinc-50">
 
         <motion.div
           className="relative z-20"
@@ -16,12 +16,12 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
         >
-          <h1 className="font-display font-black text-7xl lg:text-[length:min(4.5rem,13svh)] xl:text-[length:min(6rem,15svh)] 2xl:text-[length:min(8rem,15svh)] tracking-tighter text-zinc-950 uppercase leading-[0.95] lg:leading-[0.9] 2xl:leading-[0.85] mb-6 lg:mb-4 xl:mb-8 relative">
+          <h1 className="font-display font-black text-[length:min(4.5rem,10.5svh)] lg:text-[length:min(4.5rem,13svh)] xl:text-[length:min(6rem,15svh)] 2xl:text-[length:min(8rem,15svh)] tracking-tighter text-zinc-950 uppercase leading-[0.95] lg:leading-[0.9] 2xl:leading-[0.85] mb-6 lg:mb-4 xl:mb-8 relative">
             Familia<br />
             Respeto<br />
             <span className="text-fertex-red">FERTEX</span>
           </h1>
-          <p className="mt-4 text-lg lg:text-base xl:text-xl text-zinc-800 font-sans font-medium max-w-xl border-l-4 border-fertex-red pl-6 mb-12 lg:mb-6 2xl:mb-12 text-left">
+          <p className="mt-4 text-lg lg:text-base xl:text-xl text-zinc-800 font-sans font-medium max-w-xl border-l-4 border-fertex-red pl-6 mb-8 sm:mb-12 lg:mb-6 2xl:mb-12 text-left">
             Más de 24 años formando alumnos en Taekwondo ITF, Muay Thai y Capoeira, en San Juan de Lurigancho.
           </p>
           <div className="flex flex-wrap gap-4 xl:gap-6">
