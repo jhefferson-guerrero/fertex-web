@@ -37,7 +37,7 @@ export default function Instructors() {
         transition={{ duration: 0.5, ease: 'easeOut' }}
       >
         <div>
-          <p className="uppercase font-bold tracking-widest text-zinc-500 text-sm mb-4 border-l-4 border-fertex-red pl-4">Grados Superiores</p>
+          <p className="uppercase font-bold tracking-widest text-zinc-500 text-sm mb-4 border-l-4 border-fertex-red pl-4">Quiénes te entrenan</p>
           <h2 className="font-display font-black text-5xl md:text-6xl lg:text-7xl uppercase text-zinc-950 tracking-tighter leading-none">
             Nuestros <br className="hidden md:block" /> Maestros
           </h2>

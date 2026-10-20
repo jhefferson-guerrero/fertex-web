@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { PHONE_DISPLAY, PHONE_TEL } from '../config/contact';
 
 export default function Location() {
+  // El mapa solo reacciona al mouse y al tacto después de hacer clic en él; así no "atrapa" el scroll de la página
+  const [mapActive, setMapActive] = useState(false);
+
   return (
     <section id="contact" className="w-full bg-zinc-50 border-b-8 border-zinc-950 py-24 lg:py-32 px-4 sm:px-6 lg:px-8">
       
@@ -45,16 +48,32 @@ export default function Location() {
         </div>
 
         {/* Right Map Box */}
-        <div className="w-full lg:w-1/2 relative min-h-[400px] lg:min-h-full bg-zinc-200">
+        <div
+          className="w-full lg:w-1/2 relative min-h-[400px] lg:min-h-full bg-zinc-200"
+          onMouseLeave={() => setMapActive(false)}
+        >
            <iframe 
              src="https://www.google.com/maps?q=Av.+los+Jardines+Este+609,+San+Juan+de+Lurigancho&z=17&output=embed" 
-             className="absolute inset-0 w-full h-full grayscale contrast-[1.1] opacity-90 mix-blend-luminosity" 
+             className={`absolute inset-0 w-full h-full grayscale contrast-[1.1] opacity-90 mix-blend-luminosity ${mapActive ? '' : 'pointer-events-none'}`} 
              style={{ border: 0 }} 
              allowFullScreen="" 
              loading="lazy" 
              referrerPolicy="no-referrer-when-downgrade"
              title="Mapa de la Sede FERTEX"
            ></iframe>
+
+           {!mapActive && (
+             <button
+               type="button"
+               onClick={() => setMapActive(true)}
+               aria-label="Activar el mapa para moverlo y hacer zoom"
+               className="absolute inset-0 w-full h-full cursor-pointer group"
+             >
+               <span className="absolute bottom-0 left-0 bg-zinc-950 text-white font-sans font-bold text-xs sm:text-sm uppercase tracking-widest px-4 py-3 border-t-4 border-r-4 border-zinc-950 group-hover:bg-fertex-red transition-colors duration-200">
+                 Toca para mover el mapa
+               </span>
+             </button>
+           )}
         </div>
 
       </motion.div>

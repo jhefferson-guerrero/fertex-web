@@ -103,9 +103,9 @@ export default function Preloader({ onComplete }) {
       </div>
 
       {/* Porcentaje gigante: contorno rojo que se llena de abajo hacia arriba */}
-      <div aria-hidden="true" className="flex-1 flex items-center justify-center min-h-0">
+      <div aria-hidden="true" className="flex-1 flex items-center justify-center min-h-0 pb-[clamp(0.75rem,5svh,3rem)]">
         <span
-          className="font-display font-black leading-none tracking-tight tabular-nums select-none text-[clamp(7rem,min(46vw,70svh),34rem)]"
+          className="font-display font-black leading-none tracking-tight tabular-nums select-none text-[clamp(7rem,min(46vw,70svh),34rem)] [@media(max-height:820px)]:text-[length:min(40vw,50svh)]"
           style={{
             color: 'transparent',
             WebkitTextStroke: '3px #CC0000',

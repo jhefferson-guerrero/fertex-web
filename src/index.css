@@ -381,9 +381,11 @@
   }
 
   @media (min-width: 1024px) {
+    /* El banner ocupa toda la pantalla visible (igual que el Hero y la galería) */
     .lg-h-banner {
-      height: 80vh;
-      height: 80svh;
+      height: calc(100vh - var(--header-h));
+      height: calc(100svh - var(--header-h));
+      min-height: 460px;
     }
   }
 
