@@ -389,20 +389,6 @@
     }
   }
 
-  .animate-marquee {
-    animation: marquee 25s linear infinite;
-  }
-
-  @keyframes marquee {
-    0% {
-      transform: translateX(0%);
-    }
-
-    100% {
-      transform: translateX(-100%);
-    }
-  }
-
   .text-stroke-fertex {
     -webkit-text-stroke: 3px #CC0000;
   }

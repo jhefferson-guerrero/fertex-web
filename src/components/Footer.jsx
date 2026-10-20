@@ -56,7 +56,7 @@ export default function Footer() {
           &copy; {new Date().getFullYear()} FERTEX ACADEMIA.
         </p>
         <p className="text-zinc-400 font-sans font-bold uppercase tracking-widest text-xs">
-          FUTUROS CAMPEONES.
+          SAN JUAN DE LURIGANCHO, LIMA
         </p>
       </div>
 
