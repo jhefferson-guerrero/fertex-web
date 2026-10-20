@@ -109,7 +109,7 @@ export default function Gallery() {
       {/* Visor de fotos */}
       <AnimatePresence>
         {active && (
-          <div data-lenis-prevent="true" className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6">
+          <div data-lenis-prevent="true" className="fixed inset-0 z-[60] flex items-center justify-center p-4 sm:p-6">
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -129,17 +129,22 @@ export default function Gallery() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: 40 }}
               transition={{ type: 'spring', stiffness: 400, damping: 30 }}
-              className="relative w-full max-w-4xl outline-none"
+              className="relative w-full max-w-4xl outline-none bg-white p-2 [backface-visibility:hidden]"
             >
-              <img
-                key={active.src}
-                src={active.src}
-                alt={active.alt}
-                className="block w-full max-h-[calc(100svh-10rem)] object-contain bg-zinc-950 border-8 border-white grayscale contrast-125"
-              />
+              {/* Todas las fotos se mantienen cargadas y solo se muestra la activa:
+                  así al cambiar de foto no hay parpadeo ni espera */}
+              {PHOTOS.map((photo, index) => (
+                <img
+                  key={photo.src}
+                  src={photo.src}
+                  alt={index === activeIndex ? photo.alt : ''}
+                  aria-hidden={index === activeIndex ? undefined : true}
+                  className={`${index === activeIndex ? 'block' : 'hidden'} w-full aspect-square max-h-[calc(100svh-10rem)] object-contain bg-zinc-950 grayscale contrast-125`}
+                />
+              ))}
 
-              <div className="flex items-center gap-3 bg-white border-8 border-t-0 border-white p-2 sm:p-3">
-                <p className="flex-1 min-w-0 font-sans font-bold text-sm sm:text-base text-zinc-950 leading-snug">
+              <div className="flex flex-wrap sm:flex-nowrap items-center justify-end gap-3 px-2 pt-5 pb-3 sm:px-3">
+                <p className="basis-full sm:basis-0 sm:flex-1 min-w-0 font-sans font-bold text-sm sm:text-base text-zinc-950 leading-snug">
                   <span className="font-display font-black text-xl text-fertex-red mr-3 tabular-nums">
                     {activeIndex + 1}/{PHOTOS.length}
                   </span>
