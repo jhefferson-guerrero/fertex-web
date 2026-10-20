@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import aboutImage from '../assets/images/fertex-taekwondo-competencia-03.webp';
 import { whatsappLink, CTA_LABEL } from '../config/contact';
 import useModal from '../hooks/useModal';
+import CountUp from './CountUp';
 
 export default function About() {
   const [activeModal, setActiveModal] = useState(null);
@@ -162,12 +163,12 @@ export default function About() {
           <motion.div variants={itemVariants} initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }} className="flex flex-col sm:flex-row border-b-8 border-zinc-950">
             {/* Data Box 1 */}
             <div className="flex-1 p-8 border-b-8 sm:border-b-0 sm:border-r-8 border-zinc-950 flex flex-col justify-center items-start bg-zinc-50">
-              <span className="font-display font-black text-5xl md:text-6xl text-fertex-red tracking-tighter leading-none">24</span>
+              <CountUp to={24} duration={1.6} className="font-display font-black text-5xl md:text-6xl text-fertex-red tracking-tighter leading-none" />
               <span className="font-sans font-bold text-sm md:text-base uppercase tracking-widest text-zinc-950 mt-2">Años de Experiencia</span>
             </div>
             {/* Data Box 2 */}
             <div className="flex-1 p-8 flex flex-col justify-center items-start bg-zinc-950 text-white">
-              <span className="font-display font-black text-5xl md:text-6xl tracking-tighter leading-none">+1K</span>
+              <CountUp to={1000} prefix="+" finalLabel="1K" duration={2.2} className="font-display font-black text-5xl md:text-6xl tracking-tighter leading-none" />
               <span className="font-sans font-bold text-sm md:text-base uppercase tracking-widest text-zinc-400 mt-2">Alumnos Formados</span>
             </div>
           </motion.div>

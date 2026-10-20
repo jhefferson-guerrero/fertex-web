@@ -1,34 +1,59 @@
-import React from 'react';
+import React, { useRef } from 'react';
+import { motion, useScroll, useTransform, useReducedMotion } from 'framer-motion';
 import imgBg from '../assets/images/fertex-taekwondo-maestros-instructores-01.webp';
+import useMediaQuery from '../hooks/useMediaQuery';
 
 // Para poner el video: copiar el archivo en la carpeta /public (ej. public/fertex.mp4)
 // y escribir aquí su ruta: const VIDEO_SRC = '/fertex.mp4';
 // Mientras esté vacío, el banner muestra la foto.
 const VIDEO_SRC = '';
 
-const mediaClasses = 'absolute inset-0 w-full h-full object-cover object-[50%_0%] grayscale contrast-125';
+const mediaClasses = 'w-full h-full object-cover object-[50%_0%] grayscale contrast-125';
+
+// Parallax: la foto se mueve un poco más lento que el scroll.
+// La capa de la foto es un 20% más alta que su marco (10% de margen arriba y abajo) y se desplaza como máximo
+// ±6% de su propia altura (≈ ±7.2% del marco), así nunca queda un borde vacío.
+const OVERSCAN = '-inset-y-[10%]';
+const SHIFT = ['-6%', '6%'];
 
 export default function VideoBanner() {
+  const sectionRef = useRef(null);
+  const reduceMotion = useReducedMotion();
+  const canHover = useMediaQuery('(min-width: 1024px) and (hover: hover) and (pointer: fine)');
+  const parallax = canHover && !reduceMotion;
+
+  // Progreso 0 → 1 mientras el banner cruza la pantalla (de entrar por abajo a salir por arriba)
+  const { scrollYProgress } = useScroll({ target: sectionRef, offset: ['start end', 'end start'] });
+  const y = useTransform(scrollYProgress, [0, 1], SHIFT);
+
+  const media = VIDEO_SRC ? (
+    <video
+      autoPlay
+      loop
+      muted
+      playsInline
+      preload="metadata"
+      poster={imgBg}
+      aria-hidden="true"
+      className={mediaClasses}
+    >
+      <source src={VIDEO_SRC} type="video/mp4" />
+    </video>
+  ) : (
+    <img src={imgBg} alt="Maestros y alumnos de FERTEX sonriendo juntos" loading="lazy" className={mediaClasses} />
+  );
+
   return (
-    <section className="relative w-full flex flex-col min-h-[500px] md:min-h-[clamp(380px,70svh,600px)] lg-h-banner border-b-8 border-zinc-950 overflow-hidden bg-zinc-950">
+    <section ref={sectionRef} className="relative w-full flex flex-col min-h-[500px] md:min-h-[clamp(380px,70svh,600px)] lg-h-banner border-b-8 border-zinc-950 overflow-hidden bg-zinc-950">
 
       {/* Foto o video: se ve completa, sin texto encima, para que se aprecien las caras */}
-      <div className="relative flex-1 min-h-0">
-        {VIDEO_SRC ? (
-          <video
-            autoPlay
-            loop
-            muted
-            playsInline
-            preload="metadata"
-            poster={imgBg}
-            aria-hidden="true"
-            className={mediaClasses}
-          >
-            <source src={VIDEO_SRC} type="video/mp4" />
-          </video>
+      <div className="relative flex-1 min-h-0 overflow-hidden">
+        {parallax ? (
+          <motion.div style={{ y }} className={`absolute inset-x-0 ${OVERSCAN} will-change-transform`}>
+            {media}
+          </motion.div>
         ) : (
-          <img src={imgBg} alt="Maestros y alumnos de FERTEX sonriendo juntos" loading="lazy" className={mediaClasses} />
+          <div className="absolute inset-0">{media}</div>
         )}
       </div>
 

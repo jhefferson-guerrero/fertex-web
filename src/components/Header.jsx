@@ -124,7 +124,7 @@ export default function Header() {
                   href={link.href}
                   onClick={() => lockActiveSection(link.id)}
                   aria-current={isActive ? 'true' : undefined}
-                  className={`px-2 lg:px-3 py-2 text-sm font-bold uppercase tracking-widest transition-colors duration-200 border-2 whitespace-nowrap hover:bg-zinc-950 hover:text-white hover:border-zinc-950 ${isActive ? 'bg-zinc-950 text-white border-zinc-950' : 'text-zinc-950 border-transparent'}`}
+                  className={`relative px-2 lg:px-3 pt-2 pb-3 text-sm font-bold uppercase tracking-widest text-zinc-950 whitespace-nowrap after:content-[''] after:absolute after:left-2 after:right-2 lg:after:left-3 lg:after:right-3 after:bottom-[3px] after:h-[5px] after:origin-left after:transition-transform after:duration-200 after:ease-out ${isActive ? 'after:bg-fertex-red after:scale-x-100' : 'after:bg-zinc-950 after:scale-x-0 hover:after:scale-x-100'}`}
                 >
                   {link.label}
                 </motion.a>
@@ -182,9 +182,11 @@ export default function Header() {
                   href={link.href}
                   onClick={() => { setIsMobileMenuOpen(false); lockActiveSection(link.id); }}
                   aria-current={isActive ? 'true' : undefined}
-                  className={`block py-4 text-center text-lg font-bold uppercase tracking-widest border-b-2 border-zinc-200 ${isActive ? 'bg-zinc-950 text-white' : 'text-zinc-950 hover:bg-zinc-100'}`}
+                  className="group block py-4 text-center text-lg font-bold uppercase tracking-widest text-zinc-950 border-b-2 border-zinc-200 active:bg-zinc-100"
                 >
-                  {link.label}
+                  <span className={`relative inline-block pb-1 after:content-[''] after:absolute after:left-0 after:right-0 after:bottom-0 after:h-[4px] after:origin-left after:transition-transform after:duration-200 after:ease-out ${isActive ? 'after:bg-fertex-red after:scale-x-100' : 'after:bg-zinc-950 after:scale-x-0 [@media(hover:hover)]:group-hover:after:scale-x-100'}`}>
+                    {link.label}
+                  </span>
                 </a>
               );
             })}
