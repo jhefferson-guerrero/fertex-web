@@ -1,12 +1,12 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import logoFertex from '../assets/images/logo-fertex.webp';
 import fondoInicio from '../assets/images/fondo-inicio.webp';
 
-// Tiempo mínimo en pantalla (evita un parpadeo si todo ya está en caché)
+// Tiempo mínimo en pantalla (la barra tarda al menos esto en llegar a 100%)
 const MIN_TIME = 800;
 // Tiempo máximo de espera (por si la red es muy lenta, nunca bloqueamos el sitio)
-const MAX_TIME = 4000;
+const MAX_TIME = 2500;
 
 const loadImage = (src) =>
   new Promise((resolve) => {
@@ -25,62 +25,113 @@ const loadFonts = () =>
     document.fonts.load('600 1em Inter'),
   ]).then(() => document.fonts.ready);
 
+// El número no ocupa toda su caja de texto: el relleno se calibra para que empiece en la base
+// de los dígitos (0%) y llegue exactamente a su parte superior (100%).
+const FILL_START = 3.5;
+const FILL_END = 87;
+
 export default function Preloader({ onComplete }) {
+  const [percent, setPercent] = useState(0);
+  const doneRef = useRef(0);
+  const fillStop = FILL_START + (percent / 100) * (FILL_END - FILL_START);
+
   useEffect(() => {
     let cancelled = false;
-    let maxTimer;
-    let minTimer;
+    let frame;
+    const start = performance.now();
+
+    // En celular la foto del Hero queda debajo de la pantalla: no hace falta esperarla
+    const waitForHeroImage = window.matchMedia('(min-width: 1024px)').matches;
+    const tasks = [loadFonts(), loadImage(logoFertex)];
+    if (waitForHeroImage) tasks.push(loadImage(fondoInicio));
+    tasks.forEach((task) =>
+      Promise.resolve(task)
+        .catch(() => {})
+        .then(() => { doneRef.current += 1; })
+    );
 
     const finish = () => {
-      if (!cancelled) onComplete();
+      if (!cancelled) {
+        cancelled = true;
+        onComplete();
+      }
     };
 
-    const assetsReady = Promise.all([loadFonts(), loadImage(fondoInicio), loadImage(logoFertex)]).catch(() => {});
-    const minElapsed = new Promise((resolve) => { minTimer = setTimeout(resolve, MIN_TIME); });
-    const maxElapsed = new Promise((resolve) => { maxTimer = setTimeout(resolve, MAX_TIME); });
+    // La barra avanza con la carga real, pero nunca más rápido que el tiempo mínimo
+    const tick = (now) => {
+      if (cancelled) return;
+      const byTime = Math.min(1, (now - start) / MIN_TIME);
+      const byAssets = doneRef.current / tasks.length;
+      const progress = Math.min(byTime, byAssets);
+      setPercent(Math.round(progress * 100));
+      if (progress >= 1) {
+        finish();
+        return;
+      }
+      frame = requestAnimationFrame(tick);
+    };
+    frame = requestAnimationFrame(tick);
 
-    // Se muestra el sitio cuando todo cargó (y pasó el mínimo), o al llegar al máximo
-    Promise.race([Promise.all([assetsReady, minElapsed]), maxElapsed]).then(finish);
+    const maxTimer = setTimeout(() => {
+      setPercent(100);
+      finish();
+    }, MAX_TIME);
 
     return () => {
       cancelled = true;
-      clearTimeout(minTimer);
+      cancelAnimationFrame(frame);
       clearTimeout(maxTimer);
     };
   }, [onComplete]);
 
   return (
     <motion.div
-      className="fixed inset-0 z-[9999] bg-zinc-950 flex flex-col items-center justify-center border-b-8 border-fertex-red"
+      role="status"
+      aria-live="polite"
+      className="fixed inset-0 z-[9999] bg-zinc-950 flex flex-col justify-between overflow-hidden"
       initial={{ y: 0 }}
       exit={{
         y: '-100%',
-        transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] }
+        transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] }
       }}
     >
-      <motion.div
-        animate={{ scale: [1, 1.08, 1], opacity: [0.8, 1, 0.8] }}
-        transition={{ duration: 2.2, repeat: Infinity, ease: "easeInOut" }}
-        className="flex flex-col items-center gap-10 px-4"
-      >
-        <motion.img
-          initial={{ opacity: 0, scale: 0.5, filter: 'blur(10px)' }}
-          animate={{ opacity: 1, scale: 1, filter: 'blur(0px)' }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
-          src={logoFertex}
-          alt="FERTEX Cargando..."
-          className="w-40 md:w-48 h-auto drop-shadow-[0_0_30px_rgba(204,0,0,0.5)]"
-        />
+      <span className="sr-only">Cargando FERTEX</span>
 
-        <motion.p
-          initial={{ opacity: 0, y: 15 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
-          className="font-display font-black text-xl md:text-2xl text-zinc-400 tracking-[0.3em] uppercase"
+      {/* Fila superior: marca */}
+      <div aria-hidden="true" className="p-4 sm:p-6 lg:p-8">
+        <img src={logoFertex} alt="" className="h-14 w-14 sm:h-16 sm:w-16 object-contain" />
+      </div>
+
+      {/* Porcentaje gigante: contorno rojo que se llena de abajo hacia arriba */}
+      <div aria-hidden="true" className="flex-1 flex items-center justify-center min-h-0">
+        <span
+          className="font-display font-black leading-none tracking-tight tabular-nums select-none text-[clamp(7rem,min(46vw,70svh),34rem)]"
+          style={{
+            color: 'transparent',
+            WebkitTextStroke: '3px #CC0000',
+            backgroundImage: `linear-gradient(to top, #CC0000 ${fillStop}%, transparent ${fillStop}%)`,
+            WebkitBackgroundClip: 'text',
+            backgroundClip: 'text',
+          }}
         >
-          Preparando <span className="text-white">Tatami</span>
-        </motion.p>
-      </motion.div>
+          {percent}
+        </span>
+      </div>
+
+      {/* Fila inferior: mensaje, disciplinas y barra */}
+      <div aria-hidden="true">
+        <div className="flex items-end justify-between gap-4 px-4 sm:px-6 lg:px-8 pb-4">
+          <p className="font-display font-black text-2xl sm:text-3xl uppercase tracking-tighter leading-none text-white">
+            Preparando <span className="text-fertex-red">Tatami</span>
+          </p>
+          <p className="hidden sm:block font-sans font-bold text-xs uppercase tracking-[0.3em] text-zinc-500">
+            Taekwondo · Muay Thai · Capoeira
+          </p>
+        </div>
+        <div className="h-6 bg-zinc-800">
+          <div className="h-full bg-fertex-red" style={{ width: `${percent}%` }} />
+        </div>
+      </div>
     </motion.div>
   );
 }

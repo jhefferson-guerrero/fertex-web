@@ -6,7 +6,6 @@ import Header from './components/Header';
 import Hero from './components/Hero';
 import About from './components/About';
 import VideoBanner from './components/VideoBanner';
-import CustomCursor from './components/CustomCursor';
 import Gallery from './components/Gallery';
 import Instructors from './components/Instructors';
 import Location from './components/Location';
@@ -15,7 +14,11 @@ import Footer from './components/Footer';
 import BackToTop from './components/BackToTop';
 import WhatsAppButton from './components/WhatsAppButton';
 
+// El header escala con el tamaño de pantalla, así que se mide en vez de usar un valor fijo
+const headerHeight = () => document.querySelector('header')?.offsetHeight ?? 104;
+
 function App() {
+  // El preloader se muestra en cada carga de la página
   const [isLoading, setIsLoading] = useState(true);
   const handleLoaded = useCallback(() => setIsLoading(false), []);
 
@@ -31,7 +34,7 @@ function App() {
           window.scrollTo({ top: 0 });
         } else {
           const section = document.querySelector(href);
-          if (section) window.scrollTo({ top: section.getBoundingClientRect().top + window.scrollY - 96 });
+          if (section) window.scrollTo({ top: section.getBoundingClientRect().top + window.scrollY - headerHeight() });
         }
       };
       document.addEventListener('click', handleReducedAnchorClick);
@@ -61,7 +64,7 @@ function App() {
           lenis.scrollTo(0, { duration: 1.5 });
           return;
         }
-        lenis.scrollTo(id, { offset: -96 }); // -96px compensa el alto del header
+        lenis.scrollTo(id, { offset: -headerHeight() }); // compensa el alto (variable) del header
       }
     };
 
@@ -75,7 +78,6 @@ function App() {
 
   return (
     <MotionConfig reducedMotion="user">
-      <CustomCursor />
       <AnimatePresence>
         {isLoading && <Preloader key="preloader" onComplete={handleLoaded} />}
       </AnimatePresence>
@@ -90,7 +92,7 @@ function App() {
         Saltar al contenido
       </a>
       <Header />
-      <main id="main" tabIndex={-1} className="pt-24 outline-none">
+      <main id="main" tabIndex={-1} className="pt-[var(--header-h)] outline-none">
         <Hero />
         <About />
         <VideoBanner />

@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { whatsappLink } from '../config/contact';
 
 export default function WhatsAppButton() {
   return (
@@ -10,7 +11,7 @@ export default function WhatsAppButton() {
       className="fixed bottom-6 right-6 md:bottom-8 md:right-8 z-50 flex items-center justify-center"
     >
       <a
-        href="https://wa.me/51944351592?text=Hola%20FERTEX,%20vengo%20de%20su%20página%20web.%20Me%20gustaría%20saber%20los%20horarios%20y%20precios%20de%20las%20clases,%20por%20favor."
+        href={whatsappLink()}
         target="_blank"
         rel="noopener noreferrer"
         className="bg-[#25D366] text-white p-3 border-4 border-zinc-950 shadow-[6px_6px_0px_0px_rgba(24,24,27,1)] hover:shadow-none hover:translate-x-1 hover:translate-y-1 transition-all flex items-center justify-center group relative"

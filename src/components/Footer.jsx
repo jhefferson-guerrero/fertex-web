@@ -1,4 +1,5 @@
 import React from 'react';
+import { PHONE_DISPLAY, PHONE_TEL } from '../config/contact';
 
 export default function Footer() {
   return (
@@ -14,7 +15,7 @@ export default function Footer() {
               FERTEX
             </h2>
             <p className="font-sans text-base md:text-xl font-medium leading-relaxed text-zinc-400">
-              Forjamos campeones en la vida y en el tatami. Únete a nuestra familia y descubre el verdadero poder de la disciplina.
+              Formamos campeones en la vida y en el tatami. Únete a nuestra familia.
             </p>
           </div>
         </div>
@@ -28,7 +29,7 @@ export default function Footer() {
           </div>
           <div className="mt-auto">
             <p className="uppercase font-bold tracking-widest text-zinc-400 text-xs md:text-sm mb-1">Teléfono Directo</p>
-            <a href="tel:+51944351592" className="font-sans text-xl md:text-xl font-bold text-white hover:text-fertex-red transition-colors block">+51 944 351 592</a>
+            <a href={`tel:${PHONE_TEL}`} className="font-sans text-xl md:text-xl font-bold text-white hover:text-fertex-red transition-colors block">{PHONE_DISPLAY}</a>
           </div>
         </div>
 

@@ -315,6 +315,31 @@
 @tailwind utilities;
 
 @layer base {
+  :root {
+    /* Alto de la barra del header y alto total (barra + borde inferior de 8px) */
+    --header-inner: 6rem;
+    --header-h: calc(var(--header-inner) + 8px);
+  }
+
+  /*
+   * Escala fluida en escritorio: todo el diseño usa rem, así que la escala depende solo del ANCHO
+   * de la pantalla (los textos y botones no se encogen por tener poca altura).
+   * - 1440px o más: 16px (diseño original)
+   * - Laptop 1366px: ~15px (95%)
+   * - 1024px: 14px (mínimo)
+   * Se usa rem dentro de clamp para respetar el tamaño de letra configurado por el usuario.
+   * Para pantallas bajas, solo el header y el título del Hero se ajustan al alto (ver Header y Hero).
+   */
+  @media (min-width: 1024px) {
+    :root {
+      --header-inner: clamp(4.5rem, 12svh, 6rem);
+    }
+
+    html {
+      font-size: clamp(0.875rem, 1.1111vw, 1rem);
+    }
+  }
+
   body {
     @apply bg-zinc-50 text-zinc-950 font-sans;
   }
@@ -349,9 +374,10 @@
    * visible con las barras mostradas. La línea con vh queda de respaldo para navegadores antiguos.
    * En escritorio svh == vh, así que el diseño no cambia.
    */
+  /* Sección que ocupa como mínimo todo el alto visible (pantalla menos header) */
   .min-h-hero {
-    min-height: calc(100vh - 96px);
-    min-height: calc(100svh - 96px);
+    min-height: calc(100vh - var(--header-h));
+    min-height: calc(100svh - var(--header-h));
   }
 
   @media (min-width: 1024px) {
@@ -380,25 +406,31 @@
   }
 }
 
-/* Custom Scrollbar Brutalista */
-::-webkit-scrollbar {
-  width: 14px;
-}
+/*
+ * Custom Scrollbar Brutalista
+ * Solo con mouse (escritorio). En celular y tablet se usa la barra nativa del sistema:
+ * así no aparece la barra gris/oscura de 14px ni su borde en el lateral de la pantalla.
+ */
+@media (hover: hover) and (pointer: fine) {
+  ::-webkit-scrollbar {
+    width: 14px;
+  }
 
-::-webkit-scrollbar-track {
-  background: #18181b;
-  /* zinc-950 */
-  border-left: 2px solid #27272a;
-}
+  ::-webkit-scrollbar-track {
+    background: #18181b;
+    /* zinc-950 */
+    border-left: 2px solid #27272a;
+  }
 
-::-webkit-scrollbar-thumb {
-  background: #CC0000;
-  /* fertex-red */
-  border: 3px solid #18181b;
-  /* Borde oscuro para crear efecto de flotación */
-}
+  ::-webkit-scrollbar-thumb {
+    background: #CC0000;
+    /* fertex-red */
+    border: 3px solid #18181b;
+    /* Borde oscuro para crear efecto de flotación */
+  }
 
-::-webkit-scrollbar-thumb:hover {
-  background: #ff1a1a;
-  /* Rojo más brillante al pasar el mouse */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #ff1a1a;
+    /* Rojo más brillante al pasar el mouse */
+  }
 }

@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { PHONE_DISPLAY, PHONE_TEL } from '../config/contact';
 
 export default function Location() {
   return (
@@ -27,7 +28,7 @@ export default function Location() {
              </div>
              <div className="border-l-4 border-fertex-red pl-6">
                <p className="uppercase font-bold tracking-widest text-zinc-500 text-sm mb-2">Teléfono</p>
-               <a href="tel:+51944351592" className="leading-relaxed hover:text-fertex-red transition-colors block">+51 944 351 592</a>
+               <a href={`tel:${PHONE_TEL}`} className="leading-relaxed hover:text-fertex-red transition-colors block">{PHONE_DISPLAY}</a>
              </div>
              <div className="border-l-4 border-fertex-red pl-6">
                <p className="uppercase font-bold tracking-widest text-zinc-500 text-sm mb-2">Síguenos</p>

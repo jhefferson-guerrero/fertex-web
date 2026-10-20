@@ -1,8 +1,8 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import aboutImage from '../assets/images/fertex-taekwondo-competencia-03.webp';
-
-const FOCUSABLE = 'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])';
+import { whatsappLink, CTA_LABEL } from '../config/contact';
+import useModal from '../hooks/useModal';
 
 export default function About() {
   const [activeModal, setActiveModal] = useState(null);
@@ -14,57 +14,18 @@ export default function About() {
     setActiveModal(discipline);
   };
 
-  // UX Fix: Bloquear el scroll del fondo cuando un modal está abierto
-  // (Lenis intercepta la rueda del mouse, por eso también se detiene con lenis.stop())
-  useEffect(() => {
-    if (!activeModal) return;
-    document.body.classList.add('overflow-hidden');
-    document.documentElement.classList.add('overflow-hidden');
-    window.lenis?.stop();
-    return () => {
-      document.body.classList.remove('overflow-hidden');
-      document.documentElement.classList.remove('overflow-hidden');
-      window.lenis?.start();
-    };
-  }, [activeModal]);
-
-  // Accesibilidad: foco inicial, Escape para cerrar, foco atrapado y retorno del foco
-  useEffect(() => {
-    if (!activeModal) return;
-    const trigger = triggerRef.current;
-    dialogRef.current?.focus();
-
-    const handleKeyDown = (e) => {
-      if (e.key === 'Escape') {
-        setActiveModal(null);
-        return;
-      }
-      if (e.key !== 'Tab' || !dialogRef.current) return;
-      const items = dialogRef.current.querySelectorAll(FOCUSABLE);
-      if (items.length === 0) return;
-      const first = items[0];
-      const last = items[items.length - 1];
-      const active = document.activeElement;
-      if (e.shiftKey && (active === first || active === dialogRef.current)) {
-        e.preventDefault();
-        last.focus();
-      } else if (!e.shiftKey && active === last) {
-        e.preventDefault();
-        first.focus();
-      }
-    };
-
-    document.addEventListener('keydown', handleKeyDown);
-    return () => {
-      document.removeEventListener('keydown', handleKeyDown);
-      trigger?.focus();
-    };
-  }, [activeModal]);
+  // Scroll bloqueado, foco atrapado, Escape y retorno del foco
+  useModal({
+    isOpen: Boolean(activeModal),
+    onClose: () => setActiveModal(null),
+    dialogRef,
+    triggerRef,
+  });
 
   const disciplines = [
     {
       title: 'Taekwondo ITF',
-      description: 'Arte marcial coreano enfocado en la disciplina, técnica y autocontrol. Aprende defensa personal real a través de patadas dinámicas y forja una mentalidad inquebrantable.',
+      description: 'Arte marcial coreano de técnica, autocontrol y patadas dinámicas. Aprende defensa personal real y desarrolla una mentalidad inquebrantable.',
       tags: ['Flexibilidad', 'Defensa', 'Carácter']
     },
     {
@@ -104,7 +65,7 @@ export default function About() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="absolute inset-0 bg-zinc-950/80 backdrop-blur-sm" 
+              className="absolute inset-0 bg-zinc-950/80"
               onClick={() => setActiveModal(null)}
               aria-hidden="true"
             ></motion.div>
@@ -154,13 +115,13 @@ export default function About() {
                 
                 <div className="mt-4">
                   <a 
-                    href={`https://wa.me/51944351592?text=Hola%20FERTEX,%20estoy%20listo%20para%20entrenar%20${encodeURIComponent(activeModal.title)}.`}
+                    href={whatsappLink(`Hola FERTEX, vengo de su página web. Me gustaría saber los horarios y precios de ${activeModal.title}, por favor.`)}
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={() => setActiveModal(null)}
                     className="inline-block w-full bg-fertex-red text-white text-center text-lg font-bold uppercase tracking-widest px-8 py-5 border-4 border-zinc-950 hover:bg-zinc-950 transition-colors duration-200 shadow-[6px_6px_0px_0px_rgba(24,24,27,1)] hover:shadow-none hover:translate-x-1 hover:translate-y-1"
                   >
-                    Estoy Listo
+                    {CTA_LABEL}
                   </a>
                 </div>
               </div>
@@ -170,11 +131,14 @@ export default function About() {
         )}
       </AnimatePresence>
 
-      <div className="w-full grid grid-cols-1 lg:grid-cols-2">
+      <div className="w-full grid grid-cols-1 lg:grid-cols-2 lg:min-h-hero">
 
-        {/* Visual Column (Desktop Only) */}
-        <div className="hidden lg:flex w-full flex-col justify-center bg-zinc-50 relative lg:min-h-[600px] lg:border-r-8 border-zinc-950">
-          <img src={aboutImage} alt="Entrenamiento FERTEX" loading="lazy" className="absolute inset-0 w-full h-full object-cover grayscale contrast-125 brightness-90" />
+        {/* Visual Column (Desktop Only): la foto tiene el alto visible de la pantalla y
+            se queda fija mientras se lee el texto, así se ve casi completa en cualquier laptop */}
+        <div className="hidden lg:block w-full bg-zinc-50 relative lg:border-r-8 border-zinc-950">
+          <div className="lg:sticky lg:top-[var(--header-h)] lg:h-[calc(100svh-var(--header-h))] overflow-hidden">
+            <img src={aboutImage} alt="Entrenamiento FERTEX" loading="lazy" className="absolute inset-0 w-full h-full object-cover object-[50%_35%] grayscale contrast-125 brightness-90" />
+          </div>
         </div>
 
         {/* Text Column - Modular Layout */}
@@ -188,10 +152,10 @@ export default function About() {
             </h2>
             <div className="flex flex-col gap-4 font-sans text-lg md:text-xl text-zinc-800 leading-relaxed font-medium max-w-2xl">
               <p>
-                Hace más de 24 años nació FERTEX con el sueño de crear un espacio donde se forje disciplina, carácter y valores. Con el tiempo, nos convertimos en una gran familia marcada por el esfuerzo y el respeto.
+                Hace más de 24 años nació FERTEX con un sueño: crear un lugar donde se formen carácter y valores. Con el tiempo, nos convertimos en una gran familia marcada por el esfuerzo y el respeto.
               </p>
               <p>
-                Hoy seguimos formando personas íntegras y deportistas comprometidos, orgullosos de ver cómo nuestros alumnos conquistan metas dentro y fuera del tatami.
+                Hoy seguimos formando personas íntegras y deportistas comprometidos, y celebramos cada meta que nuestros alumnos conquistan dentro y fuera del tatami.
               </p>
             </div>
           </motion.div>
@@ -216,14 +180,14 @@ export default function About() {
           </motion.div>
 
           {/* Disciplines List */}
-          <motion.div variants={itemVariants} initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }} className="flex flex-col flex-grow bg-zinc-50">
+          <motion.div variants={itemVariants} initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }} className="flex flex-col flex-grow bg-zinc-50 lg:[&>button]:flex-1">
             {disciplines.map((discipline, index) => (
               <button
                 key={index}
                 type="button"
                 aria-haspopup="dialog"
                 onClick={(e) => openModal(discipline, e)}
-                className={`group w-full text-left flex items-center justify-between p-6 lg:p-8 hover:bg-fertex-red hover:text-white transition-colors duration-200 cursor-pointer ${index !== disciplines.length - 1 ? 'border-b-8 border-zinc-950' : ''}`}
+                className={`group w-full text-left flex items-center justify-between p-6 lg:p-8 lg:pr-24 hover:bg-fertex-red hover:text-white transition-colors duration-200 cursor-pointer ${index !== disciplines.length - 1 ? 'border-b-8 border-zinc-950' : ''}`}
               >
                 <span className="font-display font-bold text-3xl md:text-4xl uppercase tracking-tighter text-zinc-950 group-hover:text-white transition-colors">
                   {discipline.title}
