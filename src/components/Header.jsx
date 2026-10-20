@@ -101,7 +101,7 @@ export default function Header() {
                 <img
                   src={logoFertex}
                   alt="FERTEX Logo"
-                  className="h-16 md:h-20 lg:h-[calc(var(--header-inner)-1rem)] w-auto cursor-pointer hover:scale-105 active:scale-95 transition-transform duration-200 ease-out"
+                  className="h-14 lg:h-[calc(var(--header-inner)-1rem)] w-auto cursor-pointer hover:scale-105 active:scale-95 transition-transform duration-200 ease-out"
                 />
               </motion.div>
             </a>
@@ -172,7 +172,7 @@ export default function Header() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.2 }}
-            className="lg:hidden absolute top-24 left-0 w-full bg-white border-b-8 border-zinc-950 flex flex-col p-6 z-40"
+            className="lg:hidden absolute top-[var(--header-inner)] left-0 w-full bg-white border-b-8 border-zinc-950 flex flex-col p-6 z-40"
           >
             {NAV_LINKS.map((link) => {
               const isActive = activeSection === link.id;

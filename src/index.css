@@ -317,7 +317,7 @@
 @layer base {
   :root {
     /* Alto de la barra del header y alto total (barra + borde inferior de 8px) */
-    --header-inner: 6rem;
+    --header-inner: 5rem; /* celular y tablet; en escritorio se redefine más abajo */
     --header-h: calc(var(--header-inner) + 8px);
   }
 
