@@ -174,7 +174,7 @@ export default function Gallery() {
                   src={photo.src}
                   alt={index === activeIndex ? photo.alt : ''}
                   aria-hidden={index === activeIndex ? undefined : true}
-                  className={`${index === activeIndex ? 'block' : 'hidden'} w-full aspect-square max-h-[calc(100svh-10rem)] object-contain bg-zinc-950 grayscale contrast-125`}
+                  className={`${index === activeIndex ? 'block colorize' : 'hidden'} w-full aspect-square max-h-[calc(100svh-10rem)] object-contain bg-zinc-950`}
                 />
               ))}
 

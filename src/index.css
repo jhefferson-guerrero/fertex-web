@@ -389,6 +389,22 @@
     }
   }
 
+  /* Foto del visor: se abre en blanco y negro y se "enciende" a casi todo color */
+  .colorize {
+    animation: colorize 0.9s ease-out 0.15s both;
+  }
+
+  @keyframes colorize {
+    from {
+      filter: grayscale(1) contrast(1.25);
+    }
+
+    to {
+      /* 75% de color: conserva lo natural de la foto sin que el rosa y el azul choquen con la web */
+      filter: grayscale(0.25) contrast(1);
+    }
+  }
+
   .text-stroke-fertex {
     -webkit-text-stroke: 3px #CC0000;
   }
