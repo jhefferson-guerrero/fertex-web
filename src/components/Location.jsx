@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { PHONE_DISPLAY, PHONE_TEL } from '../config/contact';
+import RevealTitle from './RevealTitle';
 
 export default function Location() {
   // El mapa solo reacciona al mouse y al tacto después de hacer clic en él; así no "atrapa" el scroll de la página
@@ -20,9 +21,11 @@ export default function Location() {
         
         {/* Left Info Box */}
         <div className="w-full lg:w-1/2 p-8 md:p-12 lg:p-16 flex flex-col justify-center border-b-8 lg:border-b-0 lg:border-r-8 border-zinc-950">
-           <h2 className="font-display font-black text-5xl md:text-6xl uppercase text-zinc-950 tracking-tighter mb-10">
-             Fertex <span className="text-fertex-red">Villa Flores</span>
-           </h2>
+           <RevealTitle
+             parts={[{ text: 'Fertex' }, { text: 'Villa Flores', className: 'text-fertex-red' }]}
+             delay={0.35}
+             className="font-display font-black text-5xl md:text-6xl uppercase text-zinc-950 tracking-tighter mb-10"
+           />
            
            <div className="font-sans text-lg md:text-xl text-zinc-800 font-medium space-y-8">
              <div className="border-l-4 border-fertex-red pl-6">

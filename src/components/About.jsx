@@ -4,6 +4,7 @@ import aboutImage from '../assets/images/fertex-taekwondo-competencia-03.webp';
 import { whatsappLink, CTA_LABEL } from '../config/contact';
 import useModal from '../hooks/useModal';
 import CountUp from './CountUp';
+import RevealTitle from './RevealTitle';
 
 export default function About() {
   const [activeModal, setActiveModal] = useState(null);
@@ -139,20 +140,21 @@ export default function About() {
         <div className="w-full flex flex-col relative bg-white">
 
           {/* Header Section */}
-          <motion.div variants={itemVariants} initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }} className="p-8 lg:p-12 xl:p-16 border-b-8 border-zinc-950">
-            <h2 className="font-display font-black text-6xl md:text-7xl uppercase text-zinc-950 tracking-tighter leading-none mb-6">
-              Sobre <br />
-              <span className="text-fertex-red">Nosotros</span>
-            </h2>
-            <div className="flex flex-col gap-4 font-sans text-lg md:text-xl text-zinc-800 leading-relaxed font-medium max-w-2xl">
+          <div className="p-8 lg:p-12 xl:p-16 border-b-8 border-zinc-950">
+            <RevealTitle
+              parts={[{ text: 'Sobre' }, { text: 'Nosotros', className: 'text-fertex-red' }]}
+              breakAt="always"
+              className="font-display font-black text-6xl md:text-7xl uppercase text-zinc-950 tracking-tighter leading-none mb-6"
+            />
+            <motion.div variants={itemVariants} initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }} transition={{ delay: 0.25 }} className="flex flex-col gap-4 font-sans text-lg md:text-xl text-zinc-800 leading-relaxed font-medium max-w-2xl">
               <p>
                 Hace más de 24 años nació FERTEX con un sueño: crear un lugar donde se formen carácter y valores. Con el tiempo, nos convertimos en una gran familia marcada por el esfuerzo y el respeto.
               </p>
               <p>
                 Hoy seguimos formando personas íntegras y deportistas comprometidos, y celebramos cada meta que nuestros alumnos conquistan dentro y fuera del tatami.
               </p>
-            </div>
-          </motion.div>
+            </motion.div>
+          </div>
 
           {/* Mobile Only Visual Column (Interleaved) */}
           <motion.div variants={itemVariants} initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }} className="block lg:hidden w-full relative min-h-[350px] border-b-8 border-zinc-950">

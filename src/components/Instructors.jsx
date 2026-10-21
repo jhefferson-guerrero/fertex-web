@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import RevealTitle from './RevealTitle';
 import imgCap from '../assets/images/instructor-capoeira.webp';
 
 export default function Instructors() {
@@ -29,23 +30,34 @@ export default function Instructors() {
     <section id="instructors" className="w-full bg-zinc-950 border-b-8 border-zinc-950">
 
       {/* Massive Header */}
-      <motion.div
-        className="w-full border-b-8 border-zinc-950 bg-white p-8 lg:p-12 flex flex-col md:flex-row justify-between items-start md:items-end gap-8"
-        initial={{ opacity: 0, y: 50 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-100px" }}
-        transition={{ duration: 0.5, ease: 'easeOut' }}
-      >
+      <div className="w-full border-b-8 border-zinc-950 bg-white p-8 lg:p-12 flex flex-col md:flex-row justify-between items-start md:items-end gap-8">
         <div>
-          <p className="uppercase font-bold tracking-widest text-zinc-500 text-sm mb-4 border-l-4 border-fertex-red pl-4">Quiénes te entrenan</p>
-          <h2 className="font-display font-black text-5xl md:text-6xl lg:text-7xl uppercase text-zinc-950 tracking-tighter leading-none">
-            Nuestros <br className="hidden md:block" /> Maestros
-          </h2>
+          <motion.p
+            className="uppercase font-bold tracking-widest text-zinc-500 text-sm mb-4 border-l-4 border-fertex-red pl-4"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.5, ease: 'easeOut' }}
+          >
+            Quiénes te entrenan
+          </motion.p>
+          <RevealTitle
+            parts={[{ text: 'Nuestros' }, { text: 'Maestros', className: 'text-fertex-red' }]}
+            breakAt="md"
+            delay={0.1}
+            className="font-display font-black text-5xl md:text-6xl lg:text-7xl uppercase text-zinc-950 tracking-tighter leading-none"
+          />
         </div>
-        <p className="font-sans text-xl text-zinc-800 font-medium max-w-sm text-right hidden md:block">
+        <motion.p
+          className="font-sans text-xl text-zinc-800 font-medium max-w-sm text-right hidden md:block"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.5, delay: 0.35, ease: 'easeOut' }}
+        >
           Tres disciplinas, tres maestros que te guían en cada paso.
-        </p>
-      </motion.div>
+        </motion.p>
+      </div>
 
       {/* 3-Column Grid */}
       <div className="w-full grid grid-cols-1 md:grid-cols-3">

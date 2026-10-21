@@ -1,9 +1,16 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import { PHONE_DISPLAY, PHONE_TEL } from '../config/contact';
 
 export default function Footer() {
   return (
-    <footer className="w-full bg-zinc-950 border-t-8 border-fertex-red flex flex-col">
+    <motion.footer
+      className="w-full bg-zinc-950 border-t-8 border-fertex-red flex flex-col"
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.15 }}
+      transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+    >
 
       {/* Grid Content */}
       <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 text-white bg-zinc-950">
@@ -60,6 +67,6 @@ export default function Footer() {
         </p>
       </div>
 
-    </footer>
+    </motion.footer>
   );
 }
