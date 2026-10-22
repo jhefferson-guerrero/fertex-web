@@ -9,19 +9,16 @@ export default function Instructors() {
     {
       name: "Paco Orizano",
       discipline: "Taekwondo",
-      description: "Instructor Internacional. Especialista en combate competitivo y formación de base.",
       image: ""
     },
     {
       name: "Instructor MuayThai",
       discipline: "Muay Thai",
-      description: "Enfoque brutal en striking, acondicionamiento y sparring.",
       image: ""
     },
     {
       name: "Edson Suarez",
       discipline: "Capoeira",
-      description: "Maestro formador. Fusión perfecta entre acrobacia, ritmo y técnica de derribo.",
       image: imgCap
     }
   ];
@@ -68,8 +65,7 @@ export default function Instructors() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.15 }}
             transition={{ duration: 0.5, ease: 'easeOut', delay: index * 0.2 }}
-            tabIndex={0}
-            className="group relative min-h-[500px] lg:min-h-[clamp(440px,75svh,700px)] border-b-8 md:border-b-0 md:border-r-8 border-zinc-950 overflow-hidden last:border-r-0"
+            className="group relative min-h-[clamp(520px,150vw,640px)] md:min-h-[clamp(480px,66svh,640px)] lg:min-h-[clamp(560px,min(95svh,44vw),880px)] border-b-8 md:border-b-0 md:border-r-8 border-zinc-950 overflow-hidden last:border-r-0"
           >
             {/* Background Image */}
             {instructor.image && (
@@ -82,26 +78,19 @@ export default function Instructors() {
             )}
 
             {/* Content Container */}
-            <div className="absolute inset-0 p-8 flex flex-col justify-end z-10">
+            <div className="absolute inset-0 p-6 md:p-5 lg:p-8 flex flex-col justify-end z-10">
 
-              {/* Detail Box: siempre visible en pantallas táctiles; en escritorio (con mouse) aparece al hacer hover o enfocar */}
-              <div className="overflow-hidden mb-4">
-                <div className="[@media(hover:hover)]:translate-y-[120%] [@media(hover:hover)]:opacity-0 [@media(hover:hover)]:group-hover:translate-y-0 [@media(hover:hover)]:group-hover:opacity-100 [@media(hover:hover)]:group-focus-visible:translate-y-0 [@media(hover:hover)]:group-focus-visible:opacity-100 transition-all duration-500 ease-out flex flex-col gap-3">
-                  <span className="bg-fertex-red text-white w-max px-3 py-1 font-bold uppercase tracking-widest text-xs border-2 border-zinc-950 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
-                    {instructor.discipline}
-                  </span>
-                  <p className="font-sans text-zinc-200 text-sm md:text-base max-w-xs font-medium bg-zinc-950 p-3 border-l-2 border-fertex-red">
-                    {instructor.description}
-                  </p>
-                </div>
-              </div>
+              {/* Disciplina: etiqueta siempre visible sobre el nombre */}
+              <span className="bg-fertex-red text-white w-max px-3 py-1 mb-4 font-bold uppercase tracking-widest text-xs border-2 border-zinc-950 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+                {instructor.discipline}
+              </span>
 
               {/* Nombre: cada palabra sobre un bloque sólido para leerse sobre cualquier foto */}
-              <h3 className="font-display font-black text-5xl lg:text-6xl uppercase tracking-tighter leading-none flex flex-col items-start gap-1">
+              <h3 className="font-display font-black text-5xl md:text-4xl lg:text-6xl uppercase tracking-tighter leading-none flex flex-col items-start gap-1">
                 {instructor.name.split(' ').map((word) => (
                   <span
                     key={word}
-                    className="bg-zinc-950 text-white px-3 py-1 group-hover:bg-fertex-red group-focus-visible:bg-fertex-red transition-colors duration-300"
+                    className="bg-zinc-950 text-white px-3 py-1 group-hover:bg-fertex-red transition-colors duration-300"
                   >
                     {word}
                   </span>
