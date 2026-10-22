@@ -45,7 +45,7 @@ export default function VideoBanner() {
   );
 
   return (
-    <section ref={sectionRef} className="relative w-full flex flex-col min-h-[500px] md:min-h-[clamp(380px,70svh,600px)] lg-h-banner border-b-8 border-zinc-950 overflow-hidden bg-zinc-950">
+    <section ref={sectionRef} className="relative w-full flex flex-col min-h-[516px] md:min-h-[clamp(412px,calc(70svh+2rem),632px)] lg-h-banner border-b-8 border-zinc-950 overflow-hidden bg-zinc-950">
 
       {/* Foto o video: se ve completa, sin texto encima, para que se aprecien las caras */}
       <div className="relative flex-1 min-h-0 overflow-hidden">
@@ -58,11 +58,11 @@ export default function VideoBanner() {
         )}
       </div>
 
-      {/* Frase en una barra sólida inferior */}
-      <div className="relative bg-zinc-950 border-t-8 border-fertex-red px-4 sm:px-6 lg:px-8 py-5 md:py-6">
+      {/* Frase en una franja clara: separa la foto de la galería y da un respiro entre ambas zonas de fotos */}
+      <div className="relative bg-zinc-50 border-t-8 border-zinc-950 px-4 sm:px-6 lg:px-8 py-7 md:py-10">
         <RevealTitle
           parts={[{ text: 'No hay atajos.' }, { text: 'Solo Disciplina.', className: 'text-fertex-red' }]}
-          className="font-display font-black text-4xl sm:text-5xl lg:text-6xl uppercase text-white tracking-tighter leading-[0.95] text-center md:text-left"
+          className="font-display font-black text-4xl sm:text-5xl lg:text-6xl uppercase text-zinc-950 tracking-tighter leading-[0.95] text-center md:text-left"
         />
       </div>
 

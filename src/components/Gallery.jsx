@@ -4,18 +4,22 @@ import useModal from '../hooks/useModal';
 import imgCapoeira from '../assets/images/fertex-capoeira-entrenamiento-01.webp';
 import imgClase from '../assets/images/fertex-taekwondo-entrenamiento-01.webp';
 import imgMuayThai from '../assets/images/fertex-muaythai-entrenamiento-03.webp';
-import imgCombate from '../assets/images/fertex-taekwondo-competencia-01.webp';
 import imgMuayThaiItf from '../assets/images/fertex-muaythai-entrenamiento-07.webp';
+import imgPodio from '../assets/images/fertex-taekwondo-medallas-alumnos-03.webp';
+import imgCombate from '../assets/images/fertex-taekwondo-competencia-01.webp';
 
 // Para cambiar, agregar o quitar fotos basta editar esta lista (el orden es el del mosaico y el del visor).
 // `tile`: tamaño del recuadro; `alt`: pie de foto del visor; `position` (opcional): qué parte se ve al recortar.
-// El mosaico está pensado para 5 fotos; si se agregan más, hay que ajustar la cuadrícula.
+// Las primeras MAIN_COUNT fotos van junto al recuadro de texto (llenan la primera pantalla en escritorio);
+// el resto va en una segunda fila debajo.
+const MAIN_COUNT = 4;
 const PHOTOS = [
   { src: imgCombate, alt: 'Combate de Taekwondo en competencia', tile: 'col-span-2 row-span-2 lg:col-span-1' },
   { src: imgClase, alt: 'Clase de Taekwondo', tile: 'col-span-2', position: 'object-[50%_60%]' },
-  { src: imgMuayThaiItf, alt: 'Muay Thai en acción', tile: '' },
   { src: imgCapoeira, alt: 'Clase de Capoeira', tile: '' },
-  { src: imgMuayThai, alt: 'Entrenamiento de Muay Thai', tile: 'col-span-2 lg:col-span-1', position: 'object-[40%_center]' },
+  { src: imgMuayThai, alt: 'Entrenamiento de Muay Thai', tile: '', position: 'object-[40%_center]' },
+  { src: imgMuayThaiItf, alt: 'Muay Thai en acción', tile: '', position: 'object-[50%_8%]' },
+  { src: imgPodio, alt: 'Alumnos en el podio de una competencia', tile: '', position: 'object-[50%_38%]' },
 ];
 
 const controlBase = 'w-12 h-12 flex items-center justify-center text-white border-4 border-zinc-950 transition-colors';
@@ -78,6 +82,41 @@ export default function Gallery() {
 
   const active = activeIndex !== null ? PHOTOS[activeIndex] : null;
 
+  // Un recuadro de foto del mosaico (el botón es lo que se observa; el barrido de recorte se aplica a la capa interior)
+  const renderTile = (photo, index) => (
+    <motion.button
+      key={photo.src}
+      type="button"
+      onClick={(e) => open(index, e)}
+      aria-label={`Ampliar foto: ${photo.alt}`}
+      aria-haspopup="dialog"
+      {...own}
+      className={`group relative overflow-hidden bg-zinc-950 cursor-pointer ${photo.tile ?? ''}`}
+    >
+      {/* El botón es lo que se observa; el barrido de recorte se aplica a esta capa interior */}
+      <motion.span variants={tileVariants} className="absolute inset-0 block overflow-hidden bg-zinc-900">
+        <motion.span variants={reduceMotion ? undefined : ZOOM_SETTLE} className="absolute inset-0 block">
+          <img
+            src={photo.src}
+            alt=""
+            loading="lazy"
+            className={`w-full h-full object-cover ${photo.position ?? ''} grayscale contrast-125 brightness-90 group-hover:scale-105 transition-transform duration-700`}
+          />
+        </motion.span>
+        <span className="absolute inset-0 bg-zinc-950/20 group-hover:bg-transparent transition-colors duration-500" />
+        {/* Indicador de ampliar: siempre visible en pantallas táctiles, al hacer hover en escritorio */}
+        <span
+          aria-hidden="true"
+          className="absolute bottom-0 right-0 w-11 h-11 flex items-center justify-center bg-fertex-red text-white border-t-4 border-l-4 border-zinc-950 [@media(hover:hover)]:opacity-0 group-hover:opacity-100 group-focus-visible:opacity-100 transition-opacity duration-200"
+        >
+          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="square" strokeLinejoin="miter" strokeWidth="3" d="M12 5v14M5 12h14" />
+          </svg>
+        </span>
+      </motion.span>
+    </motion.button>
+  );
+
   return (
     <section id="gallery" className="bg-zinc-950 border-b-8 border-zinc-950">
 
@@ -91,55 +130,34 @@ export default function Gallery() {
       >
 
         {/* Presentación: la caja exterior es la que se observa; el barrido de recorte se aplica a la interior */}
-        <motion.div {...own} className="col-span-2 lg:col-span-1 overflow-hidden">
+        <motion.div {...own} className="col-span-2 lg:col-span-1 lg:row-span-2 overflow-hidden">
           <motion.div
             variants={textCellVariants}
-            className="h-full bg-zinc-50 p-8 lg:p-[clamp(1.25rem,3.5svh,2.5rem)] flex flex-col justify-center overflow-hidden"
+            className="h-full bg-zinc-950 p-8 lg:p-[clamp(1.25rem,3.5svh,2.5rem)] flex flex-col justify-center overflow-hidden"
           >
-            <motion.h2 variants={TEXT_RISE} className="font-display font-black text-5xl lg:text-[length:clamp(1.75rem,6svh,3rem)] uppercase text-zinc-950 tracking-tighter leading-none mb-5 lg:mb-[clamp(0.5rem,2svh,1.25rem)]">
+            <motion.h2 variants={TEXT_RISE} className="font-display font-black text-5xl lg:text-[length:clamp(2rem,min(8svh,4vw),4.25rem)] uppercase text-white tracking-tighter leading-none mb-5 lg:mb-[clamp(0.75rem,3svh,1.75rem)]">
               Futuros <br />
               <span className="text-fertex-red">Campeones</span>
             </motion.h2>
-            <motion.p variants={TEXT_RISE} className="font-sans text-lg lg:text-[length:clamp(0.8rem,2.3svh,1.125rem)] text-zinc-800 leading-relaxed font-medium">
+            <motion.p variants={TEXT_RISE} className="font-sans text-lg lg:text-[length:clamp(0.95rem,2.9svh,1.35rem)] text-zinc-300 leading-relaxed font-medium">
               Cada clase es el inicio de un camino. Desde los primeros pasos, el respeto y la constancia se demuestran en el tatami, no se prometen.
             </motion.p>
           </motion.div>
         </motion.div>
 
-        {PHOTOS.map((photo, index) => (
-          <motion.button
-            key={photo.src}
-            type="button"
-            onClick={(e) => open(index, e)}
-            aria-label={`Ampliar foto: ${photo.alt}`}
-            aria-haspopup="dialog"
-            {...own}
-            className={`group relative overflow-hidden bg-zinc-950 cursor-pointer ${photo.tile ?? ''}`}
-          >
-            {/* El botón es lo que se observa; el barrido de recorte se aplica a esta capa interior */}
-            <motion.span variants={tileVariants} className="absolute inset-0 block overflow-hidden bg-zinc-900">
-              <motion.span variants={reduceMotion ? undefined : ZOOM_SETTLE} className="absolute inset-0 block">
-                <img
-                  src={photo.src}
-                  alt=""
-                  loading="lazy"
-                  className={`w-full h-full object-cover ${photo.position ?? ''} grayscale contrast-125 brightness-90 group-hover:scale-105 transition-transform duration-700`}
-                />
-              </motion.span>
-              <span className="absolute inset-0 bg-zinc-950/20 group-hover:bg-transparent transition-colors duration-500" />
-              {/* Indicador de ampliar: siempre visible en pantallas táctiles, al hacer hover en escritorio */}
-              <span
-                aria-hidden="true"
-                className="absolute bottom-0 right-0 w-11 h-11 flex items-center justify-center bg-fertex-red text-white border-t-4 border-l-4 border-zinc-950 [@media(hover:hover)]:opacity-0 group-hover:opacity-100 group-focus-visible:opacity-100 transition-opacity duration-200"
-              >
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="square" strokeLinejoin="miter" strokeWidth="3" d="M12 5v14M5 12h14" />
-                </svg>
-              </span>
-            </motion.span>
-          </motion.button>
-        ))}
+        {PHOTOS.slice(0, MAIN_COUNT).map(renderTile)}
       </motion.div>
+
+      {/* Segunda fila: las fotos restantes, debajo de la primera pantalla */}
+      {PHOTOS.length > MAIN_COUNT && (
+        <motion.div
+          variants={GRID_ENTRANCE}
+          {...(isDesktop ? WHEN_VISIBLE : {})}
+          className="mt-[8px] grid grid-cols-2 gap-[8px] bg-zinc-950 auto-rows-[minmax(60vw,auto)] lg:auto-rows-auto lg:grid-rows-1 lg:h-[clamp(360px,74svh,700px)]"
+        >
+          {PHOTOS.slice(MAIN_COUNT).map((photo, i) => renderTile(photo, MAIN_COUNT + i))}
+        </motion.div>
+      )}
 
       {/* Visor de fotos */}
       <AnimatePresence>
