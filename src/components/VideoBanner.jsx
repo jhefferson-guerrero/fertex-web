@@ -62,7 +62,7 @@ export default function VideoBanner() {
       <div className="relative bg-zinc-50 border-t-8 border-zinc-950 px-4 sm:px-6 lg:px-8 py-7 md:py-10">
         <RevealTitle
           parts={[{ text: 'No hay atajos.' }, { text: 'Solo Disciplina.', className: 'text-fertex-red' }]}
-          className="font-display font-black text-4xl sm:text-5xl lg:text-6xl uppercase text-zinc-950 tracking-tighter leading-[0.95] text-center md:text-left"
+          className="font-display font-black text-4xl sm:text-5xl lg:text-7xl uppercase text-zinc-950 tracking-tighter leading-[0.95] text-center"
         />
       </div>
 

@@ -340,6 +340,11 @@
     }
   }
 
+  /* Reserva el espacio de la barra de scroll desde el inicio: al aparecer, el contenido ya no se corre 14px */
+  html {
+    scrollbar-gutter: stable;
+  }
+
   body {
     @apply bg-zinc-50 text-zinc-950 font-sans;
   }
@@ -383,9 +388,9 @@
   @media (min-width: 1024px) {
     /* El banner es un 10% más alto que la pantalla visible: la foto se aprecia más y la barra de la frase queda justo debajo */
     .lg-h-banner {
-      height: calc((100vh - var(--header-h)) * 1.1 + 2.25rem);
-      height: calc((100svh - var(--header-h)) * 1.1 + 2.25rem);
-      min-height: 556px;
+      height: calc((100vh - var(--header-h)) * 1.1 + 3rem);
+      height: calc((100svh - var(--header-h)) * 1.1 + 3rem);
+      min-height: 568px;
     }
   }
 

@@ -104,17 +104,22 @@ export default function Preloader({ onComplete }) {
 
       {/* Porcentaje gigante: contorno rojo que se llena de abajo hacia arriba */}
       <div aria-hidden="true" className="flex-1 flex items-center justify-center min-h-0 pb-[clamp(0.75rem,5svh,3rem)]">
-        <span
-          className="font-display font-black leading-none tracking-tight tabular-nums select-none text-[clamp(7rem,min(46vw,70svh),34rem)] [@media(max-height:820px)]:text-[length:min(40vw,50svh)]"
-          style={{
-            color: 'transparent',
-            WebkitTextStroke: '3px #CC0000',
-            backgroundImage: `linear-gradient(to top, #CC0000 ${fillStop}%, transparent ${fillStop}%)`,
-            WebkitBackgroundClip: 'text',
-            backgroundClip: 'text',
-          }}
-        >
-          {percent}
+        {/* La caja siempre mide lo que mide "100" (el "100" invisible fija el ancho), así el número
+            no ensancha ni mueve nada al cambiar de dígitos: evita desplazamientos de diseño (CLS) */}
+        <span className="relative inline-block font-display font-black leading-none tracking-tight tabular-nums select-none text-[clamp(7rem,min(46vw,70svh),34rem)] [@media(max-height:820px)]:text-[length:min(40vw,50svh)]">
+          <span className="invisible">100</span>
+          <span
+            className="absolute inset-0 flex items-center justify-center"
+            style={{
+              color: 'transparent',
+              WebkitTextStroke: '3px #CC0000',
+              backgroundImage: `linear-gradient(to top, #CC0000 ${fillStop}%, transparent ${fillStop}%)`,
+              WebkitBackgroundClip: 'text',
+              backgroundClip: 'text',
+            }}
+          >
+            {percent}
+          </span>
         </span>
       </div>
 

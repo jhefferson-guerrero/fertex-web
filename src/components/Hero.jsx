@@ -2,8 +2,13 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import fondoInicio from '../assets/images/fondo-inicio.webp';
 import { whatsappLink, CTA_LABEL } from '../config/contact';
+import useMediaQuery from '../hooks/useMediaQuery';
 
 export default function Hero() {
+  // En escritorio este bloque se ve desde el inicio y entra desde la derecha, su propio lado, con un pequeño retraso;
+  // en celular queda debajo de la primera pantalla, así que sube desde abajo (como el resto de la web) al llegar a él
+  const isDesktop = useMediaQuery('(min-width: 1024px)');
+
   return (
     <section className="relative border-b-8 border-zinc-950 overflow-hidden flex flex-col lg:flex-row min-h-hero">
 
@@ -46,9 +51,10 @@ export default function Hero() {
         {/* Premium typography overlay */}
         <motion.div
           className="relative z-10 p-8 lg:p-8 xl:p-12 w-full h-full flex flex-col justify-center lg:justify-between items-center lg:items-start text-center lg:text-left gap-8 lg:gap-0"
-          initial={{ opacity: 0, x: 100 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8, delay: 0.6, ease: [0.22, 1, 0.36, 1] }}
+          initial={isDesktop ? { opacity: 0, x: 100 } : { opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, x: 0, y: 0 }}
+          viewport={{ once: true, amount: 0.25 }}
+          transition={{ duration: 0.8, delay: isDesktop ? 0.6 : 0.1, ease: [0.22, 1, 0.36, 1] }}
         >
           <div className="opacity-90">
             <span className="font-display font-black text-8xl lg:text-9xl xl:text-[10rem] 2xl:text-[12rem] leading-none text-transparent tracking-tighter uppercase block text-stroke-fertex">
