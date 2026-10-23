@@ -107,9 +107,9 @@ export default function Gallery() {
         {/* Indicador de ampliar: siempre visible en pantallas táctiles, al hacer hover en escritorio */}
         <span
           aria-hidden="true"
-          className="absolute bottom-0 right-0 w-11 h-11 flex items-center justify-center bg-fertex-red text-white border-t-4 border-l-4 border-zinc-950 [@media(hover:hover)]:opacity-0 group-hover:opacity-100 group-focus-visible:opacity-100 transition-opacity duration-200"
+          className="absolute bottom-0 right-0 w-8 h-8 md:w-11 md:h-11 flex items-center justify-center bg-fertex-red text-white border-t-[3px] border-l-[3px] md:border-t-4 md:border-l-4 border-zinc-950 [@media(hover:hover)]:opacity-0 group-hover:opacity-100 group-focus-visible:opacity-100 transition-opacity duration-200"
         >
-          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg className="w-3.5 h-3.5 md:w-5 md:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="square" strokeLinejoin="miter" strokeWidth="3" d="M12 5v14M5 12h14" />
           </svg>
         </span>

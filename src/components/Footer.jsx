@@ -35,7 +35,7 @@ export default function Footer() {
             <p>San Juan de Lurigancho 15431</p>
           </div>
           <div className="mt-auto">
-            <p className="uppercase font-bold tracking-widest text-zinc-400 text-xs md:text-sm mb-1">Teléfono Directo</p>
+            <p className="uppercase font-bold tracking-widest text-zinc-400 text-xs md:text-sm mb-2">Teléfono Directo</p>
             <a href={`tel:${PHONE_TEL}`} className="font-sans text-xl md:text-xl font-bold text-white hover:text-fertex-red transition-colors block">{PHONE_DISPLAY}</a>
           </div>
         </div>
@@ -58,7 +58,7 @@ export default function Footer() {
       </div>
 
       {/* Copyright Bar */}
-      <div className="w-full bg-black border-t-8 border-zinc-800 px-6 pt-8 pb-24 md:p-6 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+      <div className="w-full bg-black border-t-8 border-zinc-800 px-6 py-8 md:p-6 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
         <p className="text-zinc-400 font-sans font-bold uppercase tracking-widest text-xs">
           &copy; {new Date().getFullYear()} FERTEX ACADEMIA.
         </p>
