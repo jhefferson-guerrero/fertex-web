@@ -21,11 +21,11 @@ export default function useModal({ isOpen, onClose, onKey, dialogRef, triggerRef
   // Bloquear el scroll del fondo (Lenis intercepta la rueda del mouse, por eso se detiene con lenis.stop())
   useEffect(() => {
     if (!isOpen) return;
-    document.body.classList.add('overflow-hidden');
+    // Solo en <html>: si body también lleva overflow hidden, se vuelve su propio contenedor de scroll
+    // y rompe los elementos sticky de la página (la foto de "Sobre Nosotros" saltaba al abrir un modal)
     document.documentElement.classList.add('overflow-hidden');
     window.lenis?.stop();
     return () => {
-      document.body.classList.remove('overflow-hidden');
       document.documentElement.classList.remove('overflow-hidden');
       window.lenis?.start();
     };

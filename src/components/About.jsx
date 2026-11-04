@@ -114,7 +114,7 @@ export default function About() {
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={() => setActiveModal(null)}
-                    className="inline-block w-full bg-fertex-red text-white text-center text-lg font-bold uppercase tracking-widest px-8 py-5 border-4 border-zinc-950 hover:bg-zinc-950 transition-colors duration-200 shadow-[6px_6px_0px_0px_rgba(24,24,27,1)] hover:shadow-none hover:translate-x-1 hover:translate-y-1"
+                    className="inline-block w-full bg-fertex-red text-white text-center text-sm md:text-lg font-bold uppercase tracking-widest px-5 py-3 md:px-8 md:py-5 border-[3px] md:border-4 border-zinc-950 hover:bg-zinc-950 transition-colors duration-200 shadow-[4px_4px_0px_0px_rgba(24,24,27,1)] md:shadow-[6px_6px_0px_0px_rgba(24,24,27,1)] hover:shadow-none hover:translate-x-1 hover:translate-y-1"
                   >
                     {CTA_LABEL}
                   </a>
