@@ -58,7 +58,7 @@ export default function Footer() {
       </div>
 
       {/* Copyright Bar */}
-      <div className="w-full bg-black border-t-8 border-zinc-800 px-6 py-8 md:p-6 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+      <div className="w-full bg-black border-t-8 border-zinc-800 px-6 pt-8 pb-[33px] md:p-6 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
         <p className="text-zinc-400 font-sans font-bold uppercase tracking-widest text-xs">
           &copy; {new Date().getFullYear()} FERTEX ACADEMIA.
         </p>
