@@ -4,9 +4,9 @@ import logoFertex from '../assets/images/logo-fertex.webp';
 import fondoInicio from '../assets/images/fondo-inicio.webp';
 
 // Tiempo mínimo en pantalla (la barra tarda al menos esto en llegar a 100%)
-const MIN_TIME = 800;
+const MIN_TIME = 1800;
 // Tiempo máximo de espera (por si la red es muy lenta, nunca bloqueamos el sitio)
-const MAX_TIME = 2500;
+const MAX_TIME = 3500;
 
 const loadImage = (src) =>
   new Promise((resolve) => {
@@ -106,7 +106,7 @@ export default function Preloader({ onComplete }) {
       <div aria-hidden="true" className="flex-1 flex items-center justify-center min-h-0 pb-[clamp(0.75rem,5svh,3rem)]">
         {/* La caja siempre mide lo que mide "100" (el "100" invisible fija el ancho), así el número
             no ensancha ni mueve nada al cambiar de dígitos: evita desplazamientos de diseño (CLS) */}
-        <span className="relative inline-block font-display font-black leading-none tracking-tight tabular-nums select-none text-[clamp(7rem,min(46vw,70svh),34rem)] [@media(max-height:820px)]:text-[length:min(40vw,50svh)]">
+        <span className="relative inline-block font-display font-black leading-none tracking-tight tabular-nums select-none text-[clamp(7rem,min(46vw,70svh),34rem)] [@media(max-width:1023px)_and_(max-height:820px)]:text-[length:min(40vw,50svh)] lg:text-[length:clamp(7rem,min(33vw,44svh),24rem)]">
           <span className="invisible">100</span>
           <span
             className="absolute inset-0 flex items-center justify-center"
