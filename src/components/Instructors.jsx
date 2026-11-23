@@ -1,27 +1,19 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import RevealTitle from './RevealTitle';
-import imgCap from '../assets/images/instructor-capoeira.webp';
+import imgPaco from '../assets/images/instructor-paco-orizano.webp';
+import imgGuillermo from '../assets/images/instructor-guillermo-yrigoyen.webp';
+import imgMoises from '../assets/images/instructor-moises-gomez.webp';
+
+// Las fotos son todas 3:4 y con el mismo encuadre (cabeza arriba, hasta la cintura),
+// así que las tres tarjetas se ven iguales. Al agregar un maestro nuevo, recortar su foto igual.
+const instructors = [
+  { name: 'Paco Orizano', discipline: 'Taekwondo', image: imgPaco },
+  { name: 'Guillermo Yrigoyen', discipline: 'Taekwondo', image: imgGuillermo },
+  { name: 'Moisés Gómez', discipline: 'Taekwondo', image: imgMoises },
+];
 
 export default function Instructors() {
-  // Para agregar una foto: importarla arriba (import imgPaco from '../assets/images/...') y poner `image: imgPaco`
-  const instructors = [
-    {
-      name: "Paco Orizano",
-      discipline: "Taekwondo",
-      image: ""
-    },
-    {
-      name: "Instructor MuayThai",
-      discipline: "Muay Thai",
-      image: ""
-    },
-    {
-      name: "Edson Suarez",
-      discipline: "Capoeira",
-      image: imgCap
-    }
-  ];
 
   return (
     <section id="instructors" className="w-full bg-zinc-950 border-b-8 border-zinc-950">
@@ -73,7 +65,7 @@ export default function Instructors() {
                 loading="lazy"
                 src={instructor.image}
                 alt={instructor.name}
-                className="absolute inset-0 w-full h-full object-cover grayscale contrast-125 brightness-75 group-hover:scale-105 group-hover:grayscale-0 group-hover:contrast-100 group-hover:brightness-90 transition-all duration-700 ease-in-out"
+                className="absolute inset-0 w-full h-full object-cover object-[50%_20%] grayscale contrast-125 brightness-75 group-hover:scale-105 group-hover:grayscale-0 group-hover:contrast-100 group-hover:brightness-90 transition-all duration-700 ease-in-out"
               />
             )}
 
