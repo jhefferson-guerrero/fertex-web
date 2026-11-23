@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { PHONE_DISPLAY, PHONE_TEL } from '../config/contact';
 import RevealTitle from './RevealTitle';
@@ -6,6 +6,18 @@ import RevealTitle from './RevealTitle';
 export default function Location() {
   // El mapa solo reacciona al mouse y al tacto después de hacer clic en él; así no "atrapa" el scroll de la página
   const [mapActive, setMapActive] = useState(false);
+  const mapBoxRef = useRef(null);
+
+  // Con el mouse se desactiva al salir (onMouseLeave); en pantallas táctiles no existe "salir",
+  // así que también se desactiva al tocar cualquier punto fuera del mapa
+  useEffect(() => {
+    if (!mapActive) return;
+    const handlePointerDown = (e) => {
+      if (!mapBoxRef.current?.contains(e.target)) setMapActive(false);
+    };
+    document.addEventListener('pointerdown', handlePointerDown);
+    return () => document.removeEventListener('pointerdown', handlePointerDown);
+  }, [mapActive]);
 
   return (
     <section id="contact" className="w-full bg-zinc-50 border-b-8 border-zinc-950 py-24 lg:py-32 px-4 sm:px-6 lg:px-8">
@@ -52,6 +64,7 @@ export default function Location() {
 
         {/* Right Map Box */}
         <div
+          ref={mapBoxRef}
           className="w-full lg:w-1/2 relative min-h-[400px] lg:min-h-full bg-zinc-200"
           onMouseLeave={() => setMapActive(false)}
         >
