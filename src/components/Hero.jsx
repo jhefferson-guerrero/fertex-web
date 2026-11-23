@@ -44,7 +44,7 @@ export default function Hero() {
       <div className="w-full lg:w-1/2 relative bg-zinc-950 min-h-[500px] lg:min-h-0 flex items-center justify-center overflow-hidden">
 
         <div className="absolute inset-0 z-0 overflow-hidden">
-          <img src={fondoInicio} alt="" className="w-full h-full object-cover object-[85%_50%] scale-110 grayscale contrast-[1.25] brightness-[0.9] mix-blend-luminosity" aria-hidden="true" />
+          <img src={fondoInicio} alt="" className="w-full h-full object-cover object-right lg:object-[85%_50%] scale-110 grayscale contrast-[1.25] brightness-[0.9] mix-blend-luminosity" aria-hidden="true" />
           <div className="absolute inset-0 bg-zinc-950/35"></div>
         </div>
 
